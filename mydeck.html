@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>Document</title>
+</head>
+<body class="bg-[#121212]">
+
+  <header class="flex items-center justify-between lg:justify-around px-5">
+    <img src="img/trolls-logo.png" alt="trolls-logo" class="w-16 lg:w-20">
+    <img src="img/menu-icon.png" alt="menu" class="lg:hidden">
+    <ul class="hidden text-white lg:flex gap-24">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mydeck.html">My Deck</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="guide.html">Guide</a></li>
+    </ul>
+    <img src="img/cart-icon.png" alt="" class="hidden lg:block">
+  </header>
+
+  <section class="flex flex-col items-center pt-16 gap-16">
+    <h1 class="text-center bg-[linear-gradient(90deg,#6BDFDB,#2278FB)] text-5xl font-sf font-extrabold [background-clip:text] text-transparent line leading-[4rem]">Troll Legends <br><span class="text-white">My Deck of Wonders!</span></h1>
+
+    <div class="w-full gap-7 overflow-scroll pl-2 lg:pl-0 flex lg:gap-14">
+        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-white hover:text-black [transition:.4s] hover:[box-shadow:0_0_20px_rgba(255,255,255,.3)]">all</div>
+        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-[rgb(255,51,255)] hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,51,255,.3)]">legendary</div>
+        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-[rgb(0,255,0)] hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,255,255,.3)]">epic</div>
+        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-[rgb(255,150,0)] hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,255,255,.3)]">rare</div>
+        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-white hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,255,255,.3)]">commun</div>
+    </div>
+  </section>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+</html>
