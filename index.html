@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <title>Trolls</title>
+    
+    <style type="text/tailwindcss">
+      @theme {
+        /* --color-clifford: #da373d; */
+        --font-erica: "Erica One";
+        --font-lilita: "Lilita One";
+        --font-sf: "SF Pro Display";
+      }
+      /* for the head text */
+      @keyframes text {
+        from{
+          opacity: 0;
+          filter: blur(10px);
+          translate: 0 -100px;
+        }to{
+          opacity: 1;
+          filter: blur(0px);
+          translate: 0;
+        }
+      }
+      @keyframes headImage {
+        from{
+          translate: -50% 100px;
+        }to{
+          translate: -50% 0;
+        }
+      }
+      @keyframes image1 {
+        from{
+          opacity: 0;
+          translate: -50% 0;
+          filter: blur(10px);
+          transform: rotate(-10deg);
+        }to{
+          opacity: 1;
+          translate: 0;
+          filter: blur(0px);
+          transform: rotate(0deg);
+        }
+      }
+      @keyframes image2 {
+        from{
+          opacity: 0;
+          translate: 50% 0;
+          filter: blur(10px);
+          transform: rotate(10deg);
+        }to{
+          opacity: 1;
+          translate: 0;
+          filter: blur(0px);
+          transform: rotate(0deg);
+        }
+      }
+      @keyframes image3 {
+        from{
+          opacity: 0;
+          translate: -50% 0;
+          filter: blur(10px);
+          transform: rotate(-20deg);
+        }to{
+          opacity: 1;
+          translate: 0;
+          filter: blur(0px);
+          transform: rotate(0deg);
+        }
+      }
+      @keyframes image4 {
+        from{
+          opacity: 0;
+          translate: 50% 0;
+          filter: blur(10px);
+          transform: rotate(20deg);
+        }to{
+          opacity: 1;
+          translate: 0;
+          filter: blur(0px);
+          transform: rotate(0deg);
+        }
+      }
+      .colored{
+        background: linear-gradient(90deg ,#9b18ff,orange,skyblue , #2600ff , #9b18ff , orange);
+        background-clip: text;
+        filter: blur(2px);
+        font-size: 6rem;
+        position: absolute;
+        left: 10%;
+        background-size: 700%;
+        font-family: "sf pro display";
+        font-weight: bold;
+        color: transparent;
+        animation: back 1s linear infinite ;
+      }
+      @keyframes back {
+        from{
+          background-position: 0;
+          
+        }to{
+          background-position: 100%;
+        }
+      }
+    </style>
+</head>
+<body class="bg-[#121212] overflow-x-hidden">
+  <header class="flex items-center justify-between lg:justify-around px-5">
+    <img src="img/trolls-logo.png" alt="trolls-logo" class="w-16 lg:w-20">
+    <img src="img/menu-icon.png" alt="menu" class="lg:hidden">
+    <ul class="hidden text-white lg:flex gap-24">
+      <li>Home</li>
+      <li>My Deck</li>
+      <li>Market</li>
+      <li>Favorites</li>
+      <li>Guide</li>
+    </ul>
+    <img src="img/cart-icon.png" alt="" class="hidden lg:block">
+  </header>
+
+
+  <section class="h-dvh">
+    <h1 class="text-white text-center text-[2rem] font-bold lg:text-[4rem] [animation:text_1.5s_ease]      ">WELCOME TO<br>TROLLS FOREST</h1>
+    <div class="flex justify-center items-center relative">
+      <img src="img/diamond.png" alt="diamond-guy" class="absolute top-[-5em] lg:left-1/2 lg:translate-x-[-50%] lg:[animation:headImage_1s_cubic-bezier(.4,.08,.26,1.37)]">
+  
+      <img src="img/preview-biggie.png" width="350" alt="biggie" class="hidden lg:block lg:rotate-[10deg] lg:absolute lg:top-[4em] lg:left-[55%] lg:z-[-1] [animation:image1_1.5s_cubic-bezier(.4,.08,.26,1.37)]">
+      <img src="img/preview-poppy.png" width="300" alt="poppy" class="hidden lg:block lg:rotate-[-10deg] lg:absolute lg:top-[3em] lg:right-[55%] lg:z-[-1] [animation:image2_1.5s_cubic-bezier(.4,.08,.26,1.37)]">
+      <img src="img/preview-poppy.png" width="300" alt="poppy" class="hidden lg:block lg:rotate-[20deg] lg:absolute lg:top-[6em] lg:left-[68%] lg:z-[-2] [animation:image3_1.5s_cubic-bezier(.4,.08,.26,1.37)]">
+      <img src="img/preview-biggie.png" width="350" alt="biggie" class="hidden lg:block lg:rotate-[-20deg] lg:absolute lg:top-[8em] lg:right-[65%] lg:z-[-2] [animation:image4_1.5s_cubic-bezier(.4,.08,.26,1.37)]">
+    </div>
+  </section>
+
+
+  <section class="h-dvh flex flex-col justify-center items-center text-white gap-9 lg:h-auto lg:pt-40">
+    <h2 class="font-erica text-[1.3rem] lg:text-[3rem] lg:translate-y-9">discover the game</h2>
+    <div class="flex items-center justify-center lg:px-[10%] lg:justify-between">
+      <img src="img/green-guy.png" width="300" alt="green-guy" class="hidden lg:block">
+      <p class="w-[70%] lg:px-40 lg:text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, harum. Hic facilis accusamus delectus aliquid totam id repudiandae obcaecati magni voluptatem! Quo odit iste officiis tempore impedit! Est, et excepturi?. Necessitatibus nam totam minima esse, nisi dolor hic dolore doloribus voluptates placeat rem ut nesciunt quaerat nulla, iusto molestias incidunt. Veniam, ipsa.</p>
+    </div>
+    <button class="bg-[#AE2EE4] px-5 py-1 rounded-full text-lg lg:translate-y-[-4em] lg:translate-x-24">discover <i class="fa-solid fa-arrow-right"></i></button>
+  </section>
+
+
+  <section class="h-dvh flex flex-col justify-center items-center text-white gap-9">
+    <h2 class="font-erica text-[1.3rem] lg:text-[3rem] lg:translate-y-9">explore the market</h2>
+    <div class="flex items-center justify-center lg:px-[10%] lg:justify-between">
+      <p class="w-[70%] lg:px-40 lg:text-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, harum. Hic facilis accusamus delectus aliquid totam id repudiandae obcaecati magni voluptatem! Quo odit iste officiis tempore impedit! Est, et excepturi?. Necessitatibus nam totam minima esse, nisi dolor hic dolore doloribus voluptates placeat rem ut nesciunt quaerat nulla, iusto molestias incidunt. Veniam, ipsa.</p>
+      <img src="img/preview-diamond.png" width="250" alt="diamond-guy" class="translate-y-[-4em] hidden lg:block">
+    </div>
+    <button class="bg-white px-5 py-1 rounded-full text-lg text-[#AE2EE4]">shop now <i class="fa-solid fa-arrow-right"></i></button>
+  </section>
+
+
+  <section class="h-dvh flex items-center">
+    <h2 class="hidden lg:block colored">
+      DRAG
+    </h2>
+    <div class="swiper mySwiper w-72 h-[27rem]">
+
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide bg-black rounded-lg bg-[url('img/legendary.png')] bg-cover text-white">
+          <img src="img/sparkle.png" alt="" class="absolute left-[-30px]bo top-[10%]">
+          <img src="img/poppy.png" alt="" class="absolute top-[-40px] left-1/2 translate-x-[-50%] w-[70%]">
+          <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+            <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+            <div class="flex justify-between items-center">
+              <h6 class="bg-purple-500 rounded-full px-2 text-[12px] flex items-center font-semibold">legendary</h6>
+              <h3 class="text-sf font-bold text-[1.3rem]">99$</h3>
+            </div>
+            <p class="text-[.7rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis temporibus, aperiam, perferendis</p>
+          </div>
+        </div>
+
+
+        <div class="swiper-slide bg-black rounded-lg bg-[url('img/legendary.png')] bg-cover text-white">
+          <img src="img/sparkle.png" alt="" class="absolute left-[-30px]bo top-[10%]">
+          <img src="img/diamond-guy.png" alt="" class="absolute top-[-40px] left-1/2 translate-x-[-50%] w-[70%]">
+          <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+            <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+            <div class="flex justify-between items-center">
+              <h6 class="bg-purple-500 rounded-full px-2 text-[12px] flex items-center font-semibold">legendary</h6>
+              <h3 class="text-sf font-bold text-[1.3rem]">99$</h3>
+            </div>
+            <p class="text-[.7rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis temporibus, aperiam, perferendis</p>
+          </div>
+        </div>
+
+
+        <div class="swiper-slide bg-black rounded-lg bg-[url('img/legendary.png')] bg-cover text-white">
+          <img src="img/sparkle.png" alt="" class="absolute left-[-30px]bo top-[10%]">
+          <img src="img/biggie.png" alt="" class="absolute top-[-40px] left-1/2 translate-x-[-50%] w-[70%]">
+          <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+            <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+            <div class="flex justify-between items-center">
+              <h6 class="bg-purple-500 rounded-full px-2 text-[12px] flex items-center font-semibold">legendary</h6>
+              <h3 class="text-sf font-bold text-[1.3rem]">99$</h3>
+            </div>
+            <p class="text-[.7rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis temporibus, aperiam, perferendis</p>
+          </div>
+        </div>
+
+      </div>
+  </div>
+  </section>
+
+
+  <section class="flex flex-col justify-center items-center gap-40 text-white">
+    <h1 class="font-sf text-5xl font-bold">GOT EXCITED ?</h1>
+    <div class="relative">
+      <img src="img/monster.png" alt="" class="absolute left-1/2 translate-x-[-50%] z-[-1] w-56 top-[-100px]">
+      <h1 class="[-webkit-text-stroke:3px_white] text-[5.5rem]/25 text-center font-bold text-transparent font-sf mt-20">start your<br>journey
+</h1>
+    </div>
+    <button class="bg-[#CB4DA7] px-8 py-2 text-xl rounded-full"><i class="fa-solid fa-play"></i>Start</button>
+  </section>
+
+
+<footer class="text-white flex flex-col items-center gap-7 pt-20">
+  <div class="grid grid-cols-2 gap-y-8 gap-x-28 lg:grid-cols-5">
+    <div>
+      <h2 class="text-xl font-semibold mb-3">Company</h2>
+      <p>pricing</p>
+      <p>updates</p>
+      <p>newsletter</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold mb-3">Company</h2>
+      <p>pricing</p>
+      <p>updates</p>
+      <p>newsletter</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold mb-3">Company</h2>
+      <p>pricing</p>
+      <p>updates</p>
+      <p>newsletter</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold mb-3">Company</h2>
+      <p>pricing</p>
+      <p>updates</p>
+      <p>newsletter</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold mb-3">Company</h2>
+      <p>pricing</p>
+      <p>updates</p>
+      <p>newsletter</p>
+    </div>
+  </div>
+  <img src="img/trolls-logo.png" alt="" class="w-16">
+  <h3>Made With 🔥 By IMAD</h3>
+  <p class="text-[.6em]">@genzDevs All Rights Reserverd | Privacy Policy | Terms Of Service | Cookie Notice</p>
+</footer>
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</html>
