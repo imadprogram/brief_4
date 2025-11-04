@@ -1,44 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>Document</title>
+
+    <style type="text/tailwindcss">
+        @theme {
+            /* --color-clifford: #da373d; */
+            --font-erica: "Erica One";
+            --font-lilita: "Lilita One";
+            --font-sf: "SF Pro Display";
+      }
+
+      .options:has(#option1:checked){
+        background-color: white;
+        color: black;
+      }
+      .options:has(#option2:checked){
+        background-color: rgb(204, 32, 204);
+        color: black;
+      }
+      .options:has(#option3:checked){
+        background-color: rgb(55, 253, 33);
+        color: black;
+      }
+      .options:has(#option4:checked){
+        background-color: rgb(236, 164, 49);
+        color: black;
+      }
+      .options:has(#option5:checked){
+        background-color: white;
+        color: black;
+      }
+    </style>
 </head>
+
 <body class="bg-[#121212]">
 
-  <header class="flex items-center justify-between lg:justify-around px-5">
-    <img src="img/trolls-logo.png" alt="trolls-logo" class="w-16 lg:w-20">
-    <img src="img/menu-icon.png" alt="menu" class="lg:hidden">
-    <ul class="hidden text-white lg:flex gap-24">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="mydeck.html">My Deck</a></li>
-      <li><a href="market.html">Market</a></li>
-      <li><a href="favorites.html">Favorites</a></li>
-      <li><a href="guide.html">Guide</a></li>
-    </ul>
-    <img src="img/cart-icon.png" alt="" class="hidden lg:block">
-  </header>
+    <header class="flex items-center justify-between lg:justify-around px-5">
+        <img src="img/trolls-logo.png" alt="trolls-logo" class="w-16 lg:w-20">
+        <img src="img/menu-icon.png" alt="menu" class="lg:hidden">
+        <ul class="hidden text-white lg:flex gap-24">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mydeck.html">My Deck</a></li>
+            <li><a href="market.html">Market</a></li>
+            <li><a href="favorites.html">Favorites</a></li>
+            <li><a href="guide.html">Guide</a></li>
+        </ul>
+        <img src="img/cart-icon.png" alt="" class="hidden lg:block">
+    </header>
 
-  <section class="flex flex-col items-center pt-16 gap-16">
-    <h1 class="text-center bg-[linear-gradient(90deg,#E60B09,#E9D022)] text-3xl lg:text-5xl font-sf font-extrabold [background-clip:text] text-transparent leading-[2.5rem] lg:leading-[4rem]"><span class="text-white">Welcome to the troll</span> <br>bazaar</h1>
+    <section class="flex flex-col items-center pt-16 gap-16 h-fit">
+        <h1
+            class="text-center bg-[linear-gradient(90deg,#E60B09,#E9D022)] text-3xl lg:text-5xl font-sf font-extrabold [background-clip:text] text-transparent leading-[2.5rem] lg:leading-[4rem]">
+            <span class="text-white">Welcome to the troll</span> <br>bazaar
+        </h1>
 
-    <div class="w-screen lg:w-fit gap-7 overflow-scroll lg:overflow-visible pl-2 lg:pl-0 flex lg:gap-14">
-        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-white hover:text-black [transition:.4s] hover:[box-shadow:0_0_20px_rgba(255,255,255,.3)]">all</div>
-        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-[rgb(255,51,255)] hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,51,255,.3)]">legendary</div>
-        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-[rgb(0,255,0)] hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,255,255,.3)]">epic</div>
-        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-[rgb(255,150,0)] hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,255,255,.3)]">rare</div>
-        <div class="text-white px-10 py-1 border text-center rounded-full hover:bg-white hover:text-black [transition:.4s] hover:[box-shadow:0_0_10px_rgba(255,255,255,.3)]">commun</div>
-    </div>
-  </section>
-    
+
+        <!-- filter -->
+        <div
+            class="w-svw lg:w-fit gap-7 overflow-scroll lg:overflow-visible pl-2 lg:pl-0 flex lg:gap-20 [scrollbar-width:none] text-white">
+            <div class="options px-5 py-[1px] flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s]">
+                <input type="radio" name="sort" id="option1" class="absolute opacity-0">
+                <label for="option1" class="w-full text-center">all</label>
+            </div>
+            <div class="options px-5 flex rounded-full [border:solid_purple_1px] hover:bg-purple-400 hover:[box-shadow:0_0_10px_purple] hover:text-black [transition:.2s]">
+                <input type="radio" name="sort" id="option2" class="absolute opacity-0">
+                <label for="option2" class="w-full text-center">legendary</label>
+            </div>
+            <div class="options px-5 flex rounded-full [border:solid_green_1px] hover:bg-green-500 hover:[box-shadow:0_0_10px_green] hover:text-black [transition:.2s]">
+                <input type="radio" name="sort" id="option3" class="absolute opacity-0">
+                <label for="option3" class="w-full text-center">epic</label>
+            </div>
+            <div class="options px-5 flex rounded-full [border:solid_orange_1px] hover:bg-orange-300 hover:[box-shadow:0_0_10px_orange] hover:text-black [transition:.2s]">
+                <input type="radio" name="sort" id="option4" class="absolute opacity-0">
+                <label for="option4" class="w-full text-center">rare</label>
+            </div>
+            <div class="options px-5 flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s] relative">
+                <input type="radio" name="sort" id="option5" class="absolute top-0 left-0 opacity-0">
+                <label for="option5" class="w-full text-center">commun</label>
+            </div>
+        </div>
+
+
+        <!-- cards list -->
+        <div class="cards-container h-fit grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-24 overflow-x-hidden">
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/legendary.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">
+                <img src="img/poppy.png" width="160" alt="queen-poppy" class="absolute top-[-3rem] left-[10%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Queen Poppy</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-purple-500 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            legendary
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">99$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/epic.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/green-guy.png" alt="green green-guy" class="w-[180px] absolute top-[-3rem] left-[0%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Green Guy</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-green-700 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            epic
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">79$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-black bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/groso.png" alt="groso" class="w-[180px] absolute left-[5%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Groso</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-[rgba(255,255,255,.2)] rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            commun
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">19$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/epic.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/goblen.png" alt="goblen" class="w-[180px] absolute  left-[10%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Goblen</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-green-700 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            epic
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">79$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/rare.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/hairy.png" alt="green green-guy" class="w-[180px] absolute  left-[5%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Hairy</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-[rgb(256,146,60,.8)] rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            rare
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">59$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/legendary.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">
+                <img src="img/diamond-guy.png" width="180" alt="green green-guy" class="absolute top-[-3rem] left-[5%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Diamond guy</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-purple-500 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            epic
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">99$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-black text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/nino.png" alt="green green-guy" class="w-[180px] absolute  left-[5%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Green Guy</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-[rgba(255,255,255,.2)] rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            commun
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">19$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/rare.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/clover.png" alt="green green-guy" class="w-[180px] absolute top-[-3rem] left-[5%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Clover</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-orange-500 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            rare
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">59$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/legendary.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">
+                <img src="img/lorry.png" alt="green green-guy" class="w-[120px] absolute top-[-5rem] left-[20%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Lorry</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-purple-700 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            legendary
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">99$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+            <!-- card -->
+            <div
+                class="rounded-lg bg-[url('img/epic.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                <img src="img/bluue.png" alt="green green-guy" class="w-[190px] absolute left-[10%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <h2 class="font-lilita text-[.9rem] font-sf">Bluue</h2>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-green-700 rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            epic
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">79$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+                        temporibus, aperiam, perferendis</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
 </body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </html>
