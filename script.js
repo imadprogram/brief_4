@@ -1,5 +1,6 @@
 
 const market_container = document.getElementById('market_container');
+const pagination = document.getElementById('pagination')
 
 const cards = [
   {
@@ -19,10 +20,10 @@ const cards = [
     price: 79
   },
   {
-    background: "black",
+    background: "img/commun.png",
     character: "img/groso.png",
     name: "Groso",
-    type: "common",
+    type: "commun",
     color: "rgba(255, 255, 255, 0.2)",
     price: 19
   },
@@ -51,10 +52,10 @@ const cards = [
     price: 99
   },
   {
-    background: "img/black",
+    background: "img/commun.png",
     character: "img/nino.png",
     name: "Nino",
-    type: "common",
+    type: "commun",
     color: "rgba(255, 255, 255, .4)",
     price: 19
   },
@@ -84,37 +85,98 @@ const cards = [
   }
 ];
 
-function displayCards(arr){
-  arr.forEach(card => {
-    market_container.innerHTML += `
-            <div
-                class="rounded-lg bg-${card.type === "common" ? "black" : `[url(${card.background})]`} bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+
+
+// function displayCards(arr){
+//   arr.forEach(card => {
+//     market_container.innerHTML += `
+//             <div
+//                 class="rounded-lg bg-${card.type === "common" ? "black" : `[url(${card.background})]`} bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 
-                ${card.type == 'legendary' ? '<img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">' : ''}
-                <img src="${card.character}" width="200" alt="queen-poppy" class="absolute top-[-3rem] left-[10%]">
-                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
-                <div class="flex justify-between">
-                    <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
-                    <div>
-                    <ion-icon name="heart-outline" class="hover:text-red-500"></ion-icon>
-                    <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
-                    </div>
-                </div>
-                    <div class="flex justify-between items-center">
-                        <h6 class="bg-[${card.color}] rounded-full px-2 text-[7px] flex items-center font-semibold">
-                            ${card.type}
-                        </h6>
-                        <h3 class="text-sf font-bold text-[.8rem] font-sf">${card.price}$</h3>
-                    </div>
-                    <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
-                        temporibus, aperiam, perferendis</p>
-                </div>
+//                 ${card.type == 'legendary' ? '<img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">' : ''}
+//                 <img src="${card.character}" width="200" alt="queen-poppy" class="absolute top-[-3rem] left-[10%]">
+//                 <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+//                 <div class="flex justify-between">
+//                     <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
+//                     <div>
+//                     <ion-icon name="heart-outline" class="hover:text-red-500"></ion-icon>
+//                     <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+//                     </div>
+//                 </div>
+//                     <div class="flex justify-between items-center">
+//                         <h6 class="bg-[${card.color}] rounded-full px-2 text-[7px] flex items-center font-semibold">
+//                             ${card.type}
+//                         </h6>
+//                         <h3 class="text-sf font-bold text-[.8rem] font-sf">${card.price}$</h3>
+//                     </div>
+//                     <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
+//                         temporibus, aperiam, perferendis</p>
+//                 </div>
+//             </div>
+//     `
+//   });
+// }
+
+
+function displayCards(arr, pageIndex) {
+  market_container.innerHTML = "";
+
+  const itemsPerPage = 9;                      
+  const start = pageIndex * itemsPerPage;     
+  const end = start + itemsPerPage;         
+
+  for (let i = start; i < end && i < arr.length; i++) { 
+    const card = arr[i];    
+
+    market_container.innerHTML += `
+      <div
+        class="rounded-lg ${card.type === "commun" ? "bg-black" : `bg-[url(${card.background})]`} bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+        
+        ${card.type == 'legendary' ? '<img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">' : ''}
+        <img src="${card.character}" width="200" alt="${card.name}" class="absolute top-[-3rem] left-[10%]">
+        <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+          <div class="flex justify-between">
+            <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
+            <div>
+              <ion-icon name="heart-outline" class="hover:text-red-500"></ion-icon>
+              <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
             </div>
-    `
-  });
+          </div>
+          <div class="flex justify-between items-center">
+            <h6 class="bg-[${card.color}] rounded-full px-2 text-[7px] flex items-center font-semibold">
+              ${card.type}
+            </h6>
+            <h3 class="text-sf font-bold text-[.8rem] font-sf">${card.price}$</h3>
+          </div>
+          <p class="text-[.5rem]">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+      </div>
+    `;
+  }
 }
 
-displayCards(cards);
+
+
+function handle_pagination(arr) {
+  pagination.innerHTML = "";
+  const pages_num = Math.ceil(arr.length / 9);
+
+  for (let i = 0; i < pages_num; i++) {
+    const button = document.createElement("button");
+    button.textContent = i + 1;
+    button.classList.add("px-4", "py-1", "bg-blue-400", "mx-2");
+
+    button.addEventListener("click", () => {
+      displayCards(arr, i);
+    });
+
+    pagination.appendChild(button);
+  }
+}
+
+
+displayCards(cards , 0);
+handle_pagination(cards);
 
 
 document.querySelector("form").addEventListener("change", (e) => {
@@ -124,10 +186,16 @@ document.querySelector("form").addEventListener("change", (e) => {
   console.log(e.target.id)
 
   if(e.target.id === "all"){
-    displayCards(cards)
+    displayCards(cards , 0);
+    handle_pagination(cards);
   }else {
-    displayCards(cards.filter(elem => elem.type === e.target.id))
+
+    displayCards(cards.filter(elem => elem.type === e.target.id) , 0)
+    handle_pagination (cards.filter(elem => elem.type === e.target.id))
   }
-
-
 })
+
+
+
+
+
