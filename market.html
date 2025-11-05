@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Document</title>
 
     <style type="text/tailwindcss">
@@ -23,7 +25,7 @@
             --font-sf: "SF Pro Display";
       }
 
-      .options:has(#option1:checked){
+      .options:has(#all:checked){
         background-color: white;
         color: black;
       }
@@ -69,35 +71,34 @@
 
 
         <!-- filter -->
-        <div
-            class="w-svw lg:w-fit gap-7 overflow-scroll lg:overflow-visible pl-2 lg:pl-0 flex lg:gap-20 [scrollbar-width:none] text-white">
-            <div class="options px-5 py-[1px] flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option1" class="absolute opacity-0">
-                <label for="option1" class="w-full text-center">all</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_purple_1px] hover:bg-purple-400 hover:[box-shadow:0_0_10px_purple] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option2" class="absolute opacity-0">
-                <label for="option2" class="w-full text-center">legendary</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_green_1px] hover:bg-green-500 hover:[box-shadow:0_0_10px_green] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option3" class="absolute opacity-0">
-                <label for="option3" class="w-full text-center">epic</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_orange_1px] hover:bg-orange-300 hover:[box-shadow:0_0_10px_orange] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option4" class="absolute opacity-0">
-                <label for="option4" class="w-full text-center">rare</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s] relative">
-                <input type="radio" name="sort" id="option5" class="absolute top-0 left-0 opacity-0">
-                <label for="option5" class="w-full text-center">commun</label>
-            </div>
-        </div>
+           
+            <form class="w-svw lg:w-fit gap-7 overflow-scroll lg:overflow-visible pl-2 lg:pl-0 flex lg:gap-20 [scrollbar-width:none] text-white">
+                <div class="options px-5 py-[1px] flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="all" class="hidden">
+                    <label for="all" class="w-full text-center">all</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_purple_1px] hover:bg-purple-400 hover:[box-shadow:0_0_10px_purple] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="legendary" class="hidden">
+                    <label for="legendary" class="w-full text-center">legendary</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_green_1px] hover:bg-green-500 hover:[box-shadow:0_0_10px_green] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="option3" class="hidden">
+                    <label for="epic" class="w-full text-center">epic</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_orange_1px] hover:bg-orange-300 hover:[box-shadow:0_0_10px_orange] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="option4" class="hidden">
+                    <label for="rare" class="w-full text-center">rare</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s] relative">
+                    <input type="radio" name="sort" id="option5" class="hidden">
+                    <label for="commun" class="w-full text-center">commun</label>
+                </div>
+            </form>
 
 
         <!-- cards list -->
-        <div class="cards-container h-fit grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-24 overflow-x-hidden">
-            <!-- card -->
-            <div
+        <div id="market_container" class="cards-container h-fit grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-24 overflow-x-hidden">
+            <!-- <div
                 class="rounded-lg bg-[url('img/legendary.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">
                 <img src="img/poppy.png" width="160" alt="queen-poppy" class="absolute top-[-3rem] left-[10%]">
@@ -108,13 +109,13 @@
                             legendary
                         </h6>
                         <h3 class="text-sf font-bold text-[.8rem] font-sf">99$</h3>
+                        <button class="absolute px-4 bg-red-400 rounded-full ">add to cart</button>
                     </div>
                     <p class="text-[.5rem]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima quis
                         temporibus, aperiam, perferendis</p>
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/epic.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/green-guy.png" alt="green green-guy" class="w-[180px] absolute top-[-3rem] left-[0%]">
@@ -131,7 +132,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-black bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/groso.png" alt="groso" class="w-[180px] absolute left-[5%]">
@@ -148,7 +148,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/epic.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/goblen.png" alt="goblen" class="w-[180px] absolute  left-[10%]">
@@ -165,7 +164,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/rare.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/hairy.png" alt="green green-guy" class="w-[180px] absolute  left-[5%]">
@@ -182,7 +180,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/legendary.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">
@@ -200,7 +197,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-black text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/nino.png" alt="green green-guy" class="w-[180px] absolute  left-[5%]">
@@ -217,7 +213,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/rare.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/clover.png" alt="green green-guy" class="w-[180px] absolute top-[-3rem] left-[5%]">
@@ -234,7 +229,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/legendary.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">
@@ -252,7 +246,6 @@
                 </div>
             </div>
 
-            <!-- card -->
             <div
                 class="rounded-lg bg-[url('img/epic.png')] bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
                 <img src="img/bluue.png" alt="green green-guy" class="w-[190px] absolute left-[10%]">
@@ -268,12 +261,12 @@
                         temporibus, aperiam, perferendis</p>
                 </div>
             </div>
-
+ -->
         </div>
     </section>
 
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
 
 </html>
