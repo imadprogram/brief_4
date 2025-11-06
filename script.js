@@ -304,7 +304,7 @@ function displayFavorites() {
                         <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
                         <div>
                             <ion-icon name="heart" class="fav-icon hover:text-red-500 cursor-pointer" id='fav-${card.name}'></ion-icon> 
-                            <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+                            <ion-icon name="cart-outline" class="cart-icon hover:text-blue-500"></ion-icon>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
@@ -341,3 +341,15 @@ attachFavoriteListeners();
 
 
 
+let menu = document.getElementById('menu-btn')
+let sidebar = document.getElementById('sidebar')
+
+menu.addEventListener('click', () =>{
+  sidebar.classList.toggle('translate-x-full')
+})
+
+let close = document.getElementById('close')
+
+close.addEventListener('click' , () =>{
+  sidebar.classList.toggle('translate-x-full')
+})
