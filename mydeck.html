@@ -10,13 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Document</title>
 </head>
 <body class="bg-[#121212]">
 
   <header class="flex items-center justify-between lg:justify-around px-5">
     <img src="img/trolls-logo.png" alt="trolls-logo" class="w-16 lg:w-20">
-    <img src="img/menu-icon.png" alt="menu" class="lg:hidden">
+    <img id="menu-btn" src="img/menu-icon.png" alt="menu" class="lg:hidden">
     <ul class="hidden text-white lg:flex gap-24">
       <li><a href="index.html">Home</a></li>
       <li><a href="mydeck.html">My Deck</a></li>
@@ -24,8 +27,24 @@
       <li><a href="favorites.html">Favorites</a></li>
       <li><a href="guide.html">Guide</a></li>
     </ul>
-    <img src="img/cart-icon.png" alt="" class="hidden lg:block">
+      <img id="cart-icon" src="img/cart-icon.png" alt="" class="absolute lg:static right-20">
+
+
+    <div id="sidebar" class="lg:hidden fixed w-[80%] translate-x-full transition right-0 bottom-0 h-[100vh] bg-gray-700 pl-5 pt-5 z-10">
+    <ion-icon id="close" name="close-outline" class="text-xl"></ion-icon>
+    <ul class="lg:hidden text-white flex flex-col gap-10">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mydeck.html">My Deck</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="guide.html">Guide</a></li>
+    </ul>
+    <img id="cart-icon" src="img/cart-icon.png" alt="" class="lg:hidden pt-8">
+    </div>
   </header>
+
+  <div id="cart-bar" class="cart fixed h-full lg:w-[20%] right-0 translate-x-full transition w-full z-10 bg-gray-700"></div>
+
 
   <section class="flex flex-col items-center pt-16 gap-16">
     <h1 class="text-center bg-[linear-gradient(90deg,#6BDFDB,#2278FB)] text-3xl lg:text-5xl font-sf font-extrabold [background-clip:text] text-transparent leading-[2.5rem] lg:leading-[4rem]">Troll Legends <br><span class="text-white">My Deck of Wonders!</span></h1>
@@ -41,4 +60,6 @@
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+<script src="cart.js" ></script>
+<script src="sidebar.js"></script>
 </html>

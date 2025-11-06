@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <title>Trolls</title>
     
@@ -117,7 +120,7 @@
 <body class="bg-[#121212] overflow-x-hidden">
   <header class="flex items-center justify-between lg:justify-around px-5">
     <img src="img/trolls-logo.png" alt="trolls-logo" class="w-16 lg:w-20">
-    <img src="img/menu-icon.png" alt="menu" class="lg:hidden">
+    <img id="menu-btn" src="img/menu-icon.png" alt="menu" class="lg:hidden">
     <ul class="hidden text-white lg:flex gap-24">
       <li><a href="index.html">Home</a></li>
       <li><a href="mydeck.html">My Deck</a></li>
@@ -125,8 +128,23 @@
       <li><a href="favorites.html">Favorites</a></li>
       <li><a href="guide.html">Guide</a></li>
     </ul>
-    <img src="img/cart-icon.png" alt="" class="hidden lg:block">
+    <img id="cart-icon" src="img/cart-icon.png" alt="" class="absolute lg:static right-20">
+
+
+    <div id="sidebar" class="lg:hidden fixed w-[80%] translate-x-full transition right-0 bottom-0 h-[100vh] bg-gray-700 pl-5 pt-5 z-10">
+    <ion-icon id="close" name="close-outline" class="text-xl"></ion-icon>
+    <ul class="lg:hidden text-white flex flex-col gap-10">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mydeck.html">My Deck</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="guide.html">Guide</a></li>
+    </ul>
+    </div>
   </header>
+
+  <div id="cart-bar" class="cart fixed h-full lg:w-[20%] right-0 translate-x-full transition w-full z-10 bg-gray-700"></div>
+
 
 
   <section class="h-dvh">
@@ -174,7 +192,13 @@
           <img src="img/sparkle.png" alt="" class="absolute left-[-30px]bo top-[10%]">
           <img src="img/poppy.png" alt="" class="absolute top-[-40px] left-1/2 translate-x-[-50%] w-[70%]">
           <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
-            <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+            <div class="flex justify-between">
+              <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+              <div>
+                <ion-icon id='fav-Queen Poppy' name="heart-outline" class="fav-icon hover:text-red-500"></ion-icon>
+                <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+              </div>
+            </div>
             <div class="flex justify-between items-center">
               <h6 class="bg-purple-500 rounded-full px-2 text-[12px] flex items-center font-semibold">legendary</h6>
               <h3 class="text-sf font-bold text-[1.3rem]">99$</h3>
@@ -188,7 +212,13 @@
           <img src="img/sparkle.png" alt="" class="absolute left-[-30px]bo top-[10%]">
           <img src="img/diamond-guy.png" alt="" class="absolute top-[-40px] left-1/2 translate-x-[-50%] w-[70%]">
           <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
-            <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+            <div class="flex justify-between">
+              <h2 class="font-lilita text-[1.4rem]">Diamond guy</h2>
+              <div>
+                <ion-icon id='fav-Diamond guy' name="heart-outline" class="fav-icon hover:text-red-500"></ion-icon>
+                <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+              </div>
+            </div>
             <div class="flex justify-between items-center">
               <h6 class="bg-purple-500 rounded-full px-2 text-[12px] flex items-center font-semibold">legendary</h6>
               <h3 class="text-sf font-bold text-[1.3rem]">99$</h3>
@@ -202,7 +232,13 @@
           <img src="img/sparkle.png" alt="" class="absolute left-[-30px]bo top-[10%]">
           <img src="img/biggie.png" alt="" class="absolute top-[-40px] left-1/2 translate-x-[-50%] w-[70%]">
           <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
-            <h2 class="font-lilita text-[1.4rem]">Queen Poppy</h2>
+            <div class="flex justify-between">
+              <h2 class="font-lilita text-[1.4rem]">Biggie</h2>
+              <div>
+                <ion-icon id='fav-Biggie' name="heart-outline" class="fav-icon hover:text-red-500"></ion-icon>
+                <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+              </div>
+            </div>
             <div class="flex justify-between items-center">
               <h6 class="bg-purple-500 rounded-full px-2 text-[12px] flex items-center font-semibold">legendary</h6>
               <h3 class="text-sf font-bold text-[1.3rem]">99$</h3>
@@ -266,7 +302,10 @@
 </footer>
     
 
-</body>
+<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="swiper-script.js"></script>
+<script src="cart.js" ></script>
+<script src="sidebar.js" ></script>
+</body>
 </html>

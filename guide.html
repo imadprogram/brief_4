@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Lilita+One&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Document</title>
@@ -44,44 +44,9 @@
   </header>
 
   <div id="cart-bar" class="cart fixed h-full lg:w-[20%] right-0 translate-x-full transition w-full z-10 bg-gray-700"></div>
-
-
-  <section class="flex flex-col items-center pt-16 gap-16">
-    <h1 class="text-center bg-[linear-gradient(90deg,#11D3F3,#ADFDA2)] text-3xl lg:text-5xl font-sf font-extrabold [background-clip:text] text-transparent leading-[2.5rem] lg:leading-[4rem]"><span class="text-white">The </span>Trolls <span class="text-white">I can't <br>live without</span></h1>
-
-        <!-- filter -->
-           
-            <form class="w-svw md:w-fit gap-7 overflow-scroll md:overflow-visible pl-2 md:pl-0 flex md:gap-20 [scrollbar-width:none] text-white ">
-                <div class="options px-5 py-[1px] flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s]">
-                    <input type="radio" name="sort" id="all" class="hidden">
-                    <label for="all" class="w-full text-center">all</label>
-                </div>
-                <div class="options px-5 flex rounded-full [border:solid_purple_1px] hover:bg-purple-400 hover:[box-shadow:0_0_10px_purple] hover:text-black [transition:.2s]">
-                    <input type="radio" name="sort" id="legendary" class="hidden">
-                    <label for="legendary" class="w-full text-center">legendary</label>
-                </div>
-                <div class="options px-5 flex rounded-full [border:solid_green_1px] hover:bg-green-500 hover:[box-shadow:0_0_10px_green] hover:text-black [transition:.2s]">
-                    <input type="radio" name="sort" id="epic" class="hidden">
-                    <label for="epic" class="w-full text-center">epic</label>
-                </div>
-                <div class="options px-5 flex rounded-full [border:solid_orange_1px] hover:bg-orange-300 hover:[box-shadow:0_0_10px_orange] hover:text-black [transition:.2s]">
-                    <input type="radio" name="sort" id="rare" class="hidden">
-                    <label for="rare" class="w-full text-center">rare</label>
-                </div>
-                <div class="options px-5 flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s] relative">
-                    <input type="radio" name="sort" id="commun" class="hidden">
-                    <label for="commun" class="w-full text-center">commun</label>
-                </div>
-            </form> 
-
-        <div id="favorites-container"></div>
-        
-  </section>
+  
     
-</body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
-<script src="script.js"></script>
   <script src="cart.js"></script>
   <script src="sidebar.js"></script>
-
+</body>
 </html>

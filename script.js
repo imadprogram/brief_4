@@ -142,7 +142,7 @@ function displayCards(arr, pageIndex) {
             <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
             <div>
               <ion-icon id='fav-${card.name}' name="${iconName}" class="fav-icon hover:text-red-500"></ion-icon>
-              <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+              <ion-icon id='cart-${card.name}' name="cart-outline" class="cart-icon hover:text-blue-500"></ion-icon>
             </div>
           </div>
           <div class="flex justify-between items-center">
@@ -336,3 +336,8 @@ if (document.getElementById('favorites-container')) {
 
 
 attachFavoriteListeners();
+
+
+
+
+
