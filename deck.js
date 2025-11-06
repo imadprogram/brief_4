@@ -2,13 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const deckContainer = document.getElementById('deck-container');
 
-    // --- 1. DECK LOCAL STORAGE FUNCTION ---
     function getDeck() {
         const deckJSON = localStorage.getItem('trollDeck');
         return deckJSON ? JSON.parse(deckJSON) : [];
     }
 
-    // --- 2. DECK RENDERING (Uses ALL saved card data) ---
     function displayDeck() {
         const deck = getDeck();
 
@@ -19,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         deckContainer.innerHTML = '';
         
-        // Ensure the container is set up for a grid display
+
         deckContainer.className = 'cards-container h-fit grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-24 overflow-x-hidden pt-16';
 
         if (deck.length === 0) {
             deckContainer.innerHTML = `
-                <p class="text-white text-center text-xl mt-20 p-4">
+                <p class="text-white text-center text-xl mt-20 p-4 absolute left-1/2 translate-x-[-50%]">
                     Your deck is empty! 
                     <br>Go to the Market and buy some trolls to start your collection.
                 </p>
@@ -33,15 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         deck.forEach(item => {
-            // Reconstruct the card using the full data saved from cart.js
+
             
-            // Handle sparkle image if it exists
+
             const sparkleImgHTML = item.sparkle 
                 ? `<img src="${item.sparkle}" alt="" class="w-[250px] absolute left-[-1rem] top-0">` 
                 : '';
-            
-            // Determine the vertical position of the character image based on card type
-            // (You might need to adjust 'top-[-3rem]' for specific characters like Lorry if needed, but we'll use a generic approach for now)
             const characterPositionClass = item.img.includes('lorry') ? 'top-[-5rem] left-[20%]' : 'top-[-3rem] left-[5%]'; 
             const characterWidth = item.img.includes('lorry') ? 'w-[120px]' : (item.img.includes('poppy') ? 'w-[160px]' : 'w-[180px]');
 
