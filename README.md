@@ -137,3 +137,6 @@ HTML / CSS / JavaScript
 Optional: TailwindCSS for styling
 
 Optional: Local storage for cart and favorites persistence
+
+
+link to figma : https://www.figma.com/design/tnNEGlfdfeOvsOsSLqA7zX/brief-4--games-card-?node-id=3-16&t=TUAIH7llMt7JWT7n-1
