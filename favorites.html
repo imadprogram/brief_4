@@ -31,33 +31,35 @@
     <h1 class="text-center bg-[linear-gradient(90deg,#11D3F3,#ADFDA2)] text-3xl lg:text-5xl font-sf font-extrabold [background-clip:text] text-transparent leading-[2.5rem] lg:leading-[4rem]"><span class="text-white">The </span>Trolls <span class="text-white">I can't <br>live without</span></h1>
 
         <!-- filter -->
-        <div
-            class="w-svw lg:w-fit gap-7 overflow-scroll lg:overflow-visible pl-2 lg:pl-0 flex lg:gap-20 [scrollbar-width:none] text-white">
-            <div class="options px-5 py-[1px] flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option1" class="absolute opacity-0">
-                <label for="option1" class="w-full text-center">all</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_purple_1px] hover:bg-purple-400 hover:[box-shadow:0_0_10px_purple] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option2" class="absolute opacity-0">
-                <label for="option2" class="w-full text-center">legendary</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_green_1px] hover:bg-green-500 hover:[box-shadow:0_0_10px_green] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option3" class="absolute opacity-0">
-                <label for="option3" class="w-full text-center">epic</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_orange_1px] hover:bg-orange-300 hover:[box-shadow:0_0_10px_orange] hover:text-black [transition:.2s]">
-                <input type="radio" name="sort" id="option4" class="absolute opacity-0">
-                <label for="option4" class="w-full text-center">rare</label>
-            </div>
-            <div class="options px-5 flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s] relative">
-                <input type="radio" name="sort" id="option5" class="absolute top-0 left-0 opacity-0">
-                <label for="option5" class="w-full text-center">commun</label>
-            </div>
-        </div>
+           
+            <form class="w-svw md:w-fit gap-7 overflow-scroll md:overflow-visible pl-2 md:pl-0 flex md:gap-20 [scrollbar-width:none] text-white ">
+                <div class="options px-5 py-[1px] flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="all" class="hidden">
+                    <label for="all" class="w-full text-center">all</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_purple_1px] hover:bg-purple-400 hover:[box-shadow:0_0_10px_purple] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="legendary" class="hidden">
+                    <label for="legendary" class="w-full text-center">legendary</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_green_1px] hover:bg-green-500 hover:[box-shadow:0_0_10px_green] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="epic" class="hidden">
+                    <label for="epic" class="w-full text-center">epic</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_orange_1px] hover:bg-orange-300 hover:[box-shadow:0_0_10px_orange] hover:text-black [transition:.2s]">
+                    <input type="radio" name="sort" id="rare" class="hidden">
+                    <label for="rare" class="w-full text-center">rare</label>
+                </div>
+                <div class="options px-5 flex rounded-full [border:solid_white_1px] hover:bg-white hover:[box-shadow:0_0_10px_white] hover:text-black [transition:.2s] relative">
+                    <input type="radio" name="sort" id="commun" class="hidden">
+                    <label for="commun" class="w-full text-center">commun</label>
+                </div>
+            </form> 
 
-        <div class="favorites-container"></div>
+        <div id="favorites-container"></div>
+        
   </section>
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+<script src="script.js"></script>
 </html>

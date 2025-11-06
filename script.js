@@ -119,6 +119,7 @@ const cards = [
 
 
 function displayCards(arr, pageIndex) {
+  
   market_container.innerHTML = "";
 
   const itemsPerPage = 9;                      
@@ -126,7 +127,9 @@ function displayCards(arr, pageIndex) {
   const end = start + itemsPerPage;         
 
   for (let i = start; i < end && i < arr.length; i++) { 
-    const card = arr[i];    
+    const card = arr[i];
+
+    const iconName = isFavorite(card.name) ? "heart" : "heart-outline";
 
     market_container.innerHTML += `
       <div
@@ -138,7 +141,7 @@ function displayCards(arr, pageIndex) {
           <div class="flex justify-between">
             <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
             <div>
-              <ion-icon name="heart-outline" class="hover:text-red-500"></ion-icon>
+              <ion-icon id='fav-${card.name}' name="${iconName}" class="fav-icon hover:text-red-500"></ion-icon>
               <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
             </div>
           </div>
@@ -175,8 +178,8 @@ function handle_pagination(arr) {
 }
 
 
-displayCards(cards , 0);
-handle_pagination(cards);
+// displayCards(cards , 0);
+// handle_pagination(cards);
 
 
 document.querySelector("form").addEventListener("change", (e) => {
@@ -185,17 +188,151 @@ document.querySelector("form").addEventListener("change", (e) => {
 
   console.log(e.target.id)
 
-  if(e.target.id === "all"){
-    displayCards(cards , 0);
-    handle_pagination(cards);
-  }else {
+// Check if we are on a page that actually HAS the market container
+  if (market_container) {
 
-    displayCards(cards.filter(elem => elem.type === e.target.id) , 0)
-    handle_pagination (cards.filter(elem => elem.type === e.target.id))
+    if(e.target.id === "all"){
+      displayCards(cards , 0);
+      // ONLY run pagination if the element exists
+      if (pagination) {
+        handle_pagination(cards);
+      }
+    } else {
+
+      displayCards(cards.filter(elem => elem.type === e.target.id) , 0)
+      // ONLY run pagination if the element exists
+      if (pagination) {
+        handle_pagination (cards.filter(elem => elem.type === e.target.id))
+      }
+    }
   }
 })
 
 
 
 
+function attachFavoriteListeners() {
 
+  document.querySelectorAll('.fav-icon').forEach(icon => {
+        icon.addEventListener('click', (e) => {
+            let id = e.currentTarget.id
+            let nameofcard = id.replace('fav-', '')
+            let cardtofavorites = cards.find(card => card.name === nameofcard)
+            
+            if(cardtofavorites){
+                toggleFavorite(cardtofavorites) 
+
+                const clickedIcon = e.currentTarget; 
+                clickedIcon.name = clickedIcon.name === 'heart' ? 'heart-outline' : 'heart';
+                
+                if (document.getElementById('favorites-container')) {
+                    displayFavorites(); 
+                }
+            }
+        })
+    });
+}
+
+
+function getFavorites() {
+    const favoritesJSON = localStorage.getItem('trollFavorites');
+    
+    if (favoritesJSON) {
+        return JSON.parse(favoritesJSON);
+    } else {
+        return [];
+    }
+}
+
+function isFavorite(cardName) {
+    const favorites = getFavorites();
+    return favorites.some(favCard => favCard.name === cardName);
+}
+
+function saveFavorites(favoritesArray) {
+    const favoritesJSON = JSON.stringify(favoritesArray);
+    
+    localStorage.setItem('trollFavorites', favoritesJSON);
+}
+
+
+function toggleFavorite(card) {
+    let favorites = getFavorites();
+    
+    const index = favorites.findIndex(favCard => favCard.name === card.name);
+
+    if (index > -1) {
+        favorites.splice(index, 1);
+        console.log(`❌ Card "${card.name}" removed from favorites.`);
+
+    } else {
+        favorites.push(card);
+        console.log(`✅ Card "${card.name}" added to favorites!`);
+    }
+
+    // Save the modified array back to storage
+    saveFavorites(favorites);
+}
+
+
+
+function displayFavorites() {
+    const favoritesContainer = document.getElementById('favorites-container');
+    
+    // Stop if this element doesn't exist
+    if (!favoritesContainer) return; 
+
+    // 2. Retrieve the saved cards
+    const favoriteCards = getFavorites();
+    
+    favoritesContainer.innerHTML = ""; // Clear any previous content
+
+    if (favoriteCards.length === 0) {
+        favoritesContainer.innerHTML = "<p class='text-white text-center pt-16'>You haven't loved any trolls yet! Go find some favorites.</p>";
+    } else {
+        favoritesContainer.classList.add("cards-container", "h-fit", "grid", "grid-cols-2", "gap-3", "lg:grid-cols-3", "lg:gap-24", "overflow-x-hidden");
+        
+        favoriteCards.forEach(card => {
+            favoritesContainer.innerHTML += `
+            <div
+                class="rounded-lg ${card.type === "commun" ? "bg-black" : `bg-[url(${card.background})]`} bg-cover text-white relative w-44 h-[19rem] lg:w-56 lg:h-[20rem] overflow-hidden">
+                
+                ${card.type == 'legendary' ? '<img src="img/sparkle.png" alt="" class="w-[250px] absolute left-[-1rem] top-0">' : ''}
+                <img src="${card.character}" width="200" alt="${card.name}" class="absolute top-[-3rem] left-[10%]">
+                <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%]">
+                    <div class="flex justify-between">
+                        <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
+                        <div>
+                            <ion-icon name="heart" class="fav-icon hover:text-red-500 cursor-pointer" id='fav-${card.name}'></ion-icon> 
+                            <ion-icon name="cart-outline" class="hover:text-blue-500"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <h6 class="bg-[${card.color}] rounded-full px-2 text-[7px] flex items-center font-semibold">
+                            ${card.type}
+                        </h6>
+                        <h3 class="text-sf font-bold text-[.8rem] font-sf">${card.price}$</h3>
+                    </div>
+                    <p class="text-[.5rem]">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            `;
+        });
+    }
+}
+
+
+
+
+if (document.getElementById('market_container')) {
+    displayCards(cards, 0);
+    handle_pagination(cards);
+}
+
+if (document.getElementById('favorites-container')) {
+    displayFavorites(); 
+}
+
+
+
+attachFavoriteListeners();
