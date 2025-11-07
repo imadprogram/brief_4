@@ -188,19 +188,16 @@ document.querySelector("form").addEventListener("change", (e) => {
 
   console.log(e.target.id)
 
-// Check if we are on a page that actually HAS the market container
   if (market_container) {
 
     if(e.target.id === "all"){
       displayCards(cards , 0);
-      // ONLY run pagination if the element exists
       if (pagination) {
         handle_pagination(cards);
       }
     } else {
 
       displayCards(cards.filter(elem => elem.type === e.target.id) , 0)
-      // ONLY run pagination if the element exists
       if (pagination) {
         handle_pagination (cards.filter(elem => elem.type === e.target.id))
       }
@@ -270,7 +267,6 @@ function toggleFavorite(card) {
         console.log(`✅ Card "${card.name}" added to favorites!`);
     }
 
-    // Save the modified array back to storage
     saveFavorites(favorites);
 }
 
@@ -279,13 +275,11 @@ function toggleFavorite(card) {
 function displayFavorites() {
     const favoritesContainer = document.getElementById('favorites-container');
     
-    // Stop if this element doesn't exist
     if (!favoritesContainer) return; 
 
-    // 2. Retrieve the saved cards
     const favoriteCards = getFavorites();
     
-    favoritesContainer.innerHTML = ""; // Clear any previous content
+    favoritesContainer.innerHTML = ""; 
 
     if (favoriteCards.length === 0) {
         favoritesContainer.innerHTML = "<p class='text-white text-center pt-16'>You haven't loved any trolls yet! Go find some favorites.</p>";
