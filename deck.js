@@ -1,45 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const deckContainer = document.getElementById('deck-container');
-
+    const form = document.querySelector("form");
+    
     function getDeck() {
         const deckJSON = localStorage.getItem('trollDeck');
         return deckJSON ? JSON.parse(deckJSON) : [];
     }
 
-    function displayDeck() {
-        const deck = getDeck();
-
+    function displayDeck(arrToDisplay) {
         if (!deckContainer) {
             console.error("Deck container element with ID 'deck-container' not found.");
             return;
         }
 
         deckContainer.innerHTML = '';
-        
+        deckContainer.className = 'cards-container grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-24 overflow-x-hidden pt-16 relative min-h-[12em]';
 
-        deckContainer.className = 'cards-container h-fit grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-24 overflow-x-hidden pt-16';
+        if (arrToDisplay.length === 0) {
+            const allCards = getDeck();
+            let message = "Your deck is empty! <br>Go to the Market and buy some trolls to start your collection.";
+            
+            if (allCards.length > 0) {
+                const filterId = form.querySelector('input[name="sort"]:checked')?.id;
+                const rarityName = filterId ? filterId.charAt(0).toUpperCase() + filterId.slice(1) : 'Filtered'; 
+                message = `No ${rarityName} Trolls found in your deck. Try another filter!`;
+            }
 
-        if (deck.length === 0) {
             deckContainer.innerHTML = `
                 <p class="text-white text-center text-xl mt-20 p-4 absolute left-1/2 translate-x-[-50%]">
-                    Your deck is empty! 
-                    <br>Go to the Market and buy some trolls to start your collection.
+                    ${message}
                 </p>
             `;
             return;
         }
 
-        deck.forEach(item => {
-
-            
-
+        arrToDisplay.forEach(item => {
             const sparkleImgHTML = item.sparkle 
                 ? `<img src="${item.sparkle}" alt="" class="w-[250px] absolute left-[-1rem] top-0">` 
                 : '';
+            
             const characterPositionClass = item.img.includes('lorry') ? 'top-[-5rem] left-[20%]' : 'top-[-3rem] left-[5%]'; 
             const characterWidth = item.img.includes('lorry') ? 'w-[120px]' : (item.img.includes('poppy') ? 'w-[160px]' : 'w-[180px]');
-
 
             deckContainer.innerHTML += `
                 <div 
@@ -68,5 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    displayDeck();
+    function handleFilterChange() {
+        const fullDeck = getDeck();
+        const filterId = form.querySelector('input[name="sort"]:checked')?.id || 'all';
+
+        let filteredCards = fullDeck;
+
+        if (filterId !== 'all') {
+            filteredCards = fullDeck.filter(item => item.rarity === filterId);
+        }
+
+        displayDeck(filteredCards);
+    }
+
+    handleFilterChange();
+
+    if (form) {
+        form.addEventListener('change', handleFilterChange);
+    }
 });
