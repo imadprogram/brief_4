@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- DOM Elements ---
+    
     const cartIconDesktop = document.getElementById('cart-icon');
-    const cartIconMobile = document.getElementById('mobile-cart-icon'); // Assuming you fixed the HTML ID
+    const cartIconMobile = document.getElementById('mobile-cart-icon'); 
     const cartBar = document.getElementById('cart-bar');
     
-    // The container inside the cartBar where items will be listed
+    
     let cartItemsContainer = document.createElement('div');
     cartItemsContainer.id = 'cart-items-container';
-    // Adjusted padding-bottom for the fixed checkout button
+   
     cartItemsContainer.className = 'p-4 pt-16 h-full overflow-y-auto text-white pb-32'; 
     cartBar.appendChild(cartItemsContainer);
 
 
-    // --- 1. LOCAL STORAGE FUNCTIONS ---
 
     function getCart() {
         const cartJSON = localStorage.getItem('trollCart');
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('trollDeck', JSON.stringify(deckArray));
     }
 
-    // UPDATED: Now receives a cardData object with ALL properties
     function toggleCart(cardData) {
         let cart = getCart();
         const existingItem = cart.find(item => item.name === cardData.name);
@@ -41,9 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
-            // Store the entire cardData object plus quantity
             cart.push({
-                ...cardData, // Saves all properties: name, price, img, background, rarity, sparkle, desc
+                ...cardData, 
                 quantity: 1
             });
         }
@@ -53,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartBar.classList.remove("translate-x-full"); 
     }
 
-    // --- 2. CART BAR UI RENDERING ---
+
 
     function displayCart() {
         const cart = getCart();
@@ -67,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // --- 2a. Render Cart Items (No visual change, still shows compact view) ---
+        
         let itemsHtml = '';
         cart.forEach(item => {
             const itemTotal = item.price * item.quantity;
@@ -93,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemsContainer.innerHTML = itemsHtml;
 
 
-        // --- 2b. Render Fixed Total and Checkout Button ---
         const footerHtml = document.createElement('div');
         footerHtml.id = 'cart-footer-fixed';
         footerHtml.className = 'p-4 fixed bottom-0 right-0 z-50 bg-gray-900 border-t border-gray-700';
@@ -122,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- NEW: Checkout Logic (Unchanged) ---
     function handleCheckout() {
         let cart = getCart();
         let deck = getDeck();
@@ -132,32 +127,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 1. Merge items from cart to deck
         cart.forEach(cartItem => {
             const existingDeckItemIndex = deck.findIndex(deckItem => deckItem.name === cartItem.name);
             
             if (existingDeckItemIndex > -1) {
-                // Item exists in deck, add quantity
                 deck[existingDeckItemIndex].quantity += cartItem.quantity;
             } else {
-                // Item is new to deck, store the entire item (with all card data)
                 deck.push(cartItem);
             }
         });
         
-        // 2. Save the updated deck
         saveDeck(deck);
         
-        // 3. Clear the cart
         saveCart([]); 
         
-        // 4. Update UI and notify user
         displayCart();
         cartBar.classList.add("translate-x-full"); 
         alert(`🎉 Purchase complete! ${cart.length} item types added to your deck! Check 'My Deck'.`);
     }
 
-    // --- 3. QUANTITY MANAGEMENT (Unchanged) ---
     function updateQuantity(cardName, action) {
         let cart = getCart();
         const itemIndex = cart.findIndex(item => item.name === cardName);
@@ -193,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. MAIN EVENT LISTENERS (CRITICAL DATA CAPTURE UPDATE) ---
+
     
     function handleCartToggle() {
         cartBar.classList.toggle("translate-x-full");
@@ -202,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // A. Cart Icon Toggles
     if (cartIconDesktop && cartBar) {
         cartIconDesktop.addEventListener('click', handleCartToggle);
     }
@@ -212,39 +199,31 @@ document.addEventListener('DOMContentLoaded', () => {
         cartIconMobileCheck.addEventListener('click', handleCartToggle);
     }
     
-    // B. Card Icon Listener (Add items)
     document.body.addEventListener('click', (e) => {
         if (e.target.classList.contains('cart-icon')) {
             const cardElement = e.target.closest('.rounded-lg');
             if (!cardElement) return;
 
-            // --- TRICK: Extract ALL necessary data for the deck card ---
-            
-            // 1. Get Rarity and Rarity Color/Background
+
             const rarityElement = cardElement.querySelector('h6');
             const rarityText = rarityElement ? rarityElement.textContent.trim() : 'commun';
             const rarityClass = rarityElement ? Array.from(rarityElement.classList).find(cls => cls.startsWith('bg-')) : 'bg-[rgba(255,255,255,.2)]'; 
             
-            // 2. Get Background Image URL
-            // This is tricky as it's a Tailwind bg-[url('...')] class. We'll extract it from the element's style or class list.
             const bgClass = Array.from(cardElement.classList).find(cls => cls.startsWith('bg-[')) || 'bg-black';
             
-            // 3. Get Sparkle Image (if exists)
             const sparkleImg = cardElement.querySelector('img[src*="sparkle"]');
             const sparkleSrc = sparkleImg ? sparkleImg.src : null;
             
-            // 4. Extract Card Data
             const cardData = {
                 name: cardElement.querySelector('h2.font-lilita').textContent.trim(),
                 price: parseFloat(cardElement.querySelector('h3').textContent.replace('$', '')),
                 img: cardElement.querySelector('img:not([src*="sparkle"])').src,
                 description: cardElement.querySelector('p')?.textContent.trim() || 'No description.',
                 
-                // NEW: Full card rendering data
-                backgroundClass: bgClass, // e.g., bg-[url('img/legendary.png')]
-                rarity: rarityText,       // e.g., legendary
-                rarityClass: rarityClass, // e.g., bg-purple-500
-                sparkle: sparkleSrc       // e.g., img/sparkle.png or null
+                backgroundClass: bgClass, 
+                rarity: rarityText,      
+                rarityClass: rarityClass, 
+                sparkle: sparkleSrc       
             };
             
             toggleCart(cardData);
