@@ -68,6 +68,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. INITIALIZATION ---
     displayDeck();
 });
