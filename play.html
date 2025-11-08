@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>play</title>
+
+
+    <style>
+        
+    </style>
+</head>
+<body class="bg-[#121212] flex">
+
+    <div id="all-deck" class="bg-gray-500 w-36 h-svh flex flex-col gap-3 overflow-x-hidden [scrollbar-width:none]"></div>
+    <div class="bg-gray-600 w-full flex flex-col">
+        <div id="enemy-spot" class="w-full bg-gray-700 h-36"></div>
+        <div id="battle-area" class="w-full bg-gray-800 grow">
+            <div class="enemy-area  h-1/2 bg-gray-900">
+                <div class=" flex justify-center h-1/2 gap-40">
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                </div>
+                <div class=" flex justify-center h-1/2 gap-40">
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                </div>
+            </div>
+            <div class="player-area  h-1/2 bg-blue-900">
+                <div class=" flex justify-center h-1/2 gap-40">
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                </div>
+                <div class=" flex justify-center h-1/2 gap-40">
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                    <div class="holder   w-20 border-dotted border-red-500 border-4"></div>
+                </div>
+            </div>
+        </div>
+        <div id="player-spot" class="w-full bg-gray-700 h-36 flex justify-center gap-20"></div>
+    </div>
+    
+</body>
+<script src="play.js"></script>
+</html>

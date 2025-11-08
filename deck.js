@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const deckContainer = document.getElementById('deck-container');
-    // Select the form containing the radio buttons
     const form = document.querySelector("form");
     
-    // 1. Data Retrieval
     function getDeck() {
-        // Retrieves the full deck data from localStorage
         const deckJSON = localStorage.getItem('trollDeck');
         return deckJSON ? JSON.parse(deckJSON) : [];
     }
 
-    // 2. Display function updated to accept the array to render
     function displayDeck(arrToDisplay) {
         if (!deckContainer) {
             console.error("Deck container element with ID 'deck-container' not found.");
@@ -26,14 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let message = "Your deck is empty! <br>Go to the Market and buy some trolls to start your collection.";
             
             if (allCards.length > 0) {
-                // If the full deck is NOT empty, but the filter result IS empty
                 const filterId = form.querySelector('input[name="sort"]:checked')?.id;
-                // Capitalize the rarity name for the message
                 const rarityName = filterId ? filterId.charAt(0).toUpperCase() + filterId.slice(1) : 'Filtered'; 
                 message = `No ${rarityName} Trolls found in your deck. Try another filter!`;
             }
 
-            // Display the appropriate empty/filtered message
             deckContainer.innerHTML = `
                 <p class="text-white text-center text-xl mt-20 p-4 absolute left-1/2 translate-x-[-50%]">
                     ${message}
@@ -42,13 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Render the cards
         arrToDisplay.forEach(item => {
             const sparkleImgHTML = item.sparkle 
                 ? `<img src="${item.sparkle}" alt="" class="w-[250px] absolute left-[-1rem] top-0">` 
                 : '';
             
-            // Custom positioning for characters
             const characterPositionClass = item.img.includes('lorry') ? 'top-[-5rem] left-[20%]' : 'top-[-3rem] left-[5%]'; 
             const characterWidth = item.img.includes('lorry') ? 'w-[120px]' : (item.img.includes('poppy') ? 'w-[160px]' : 'w-[180px]');
 
@@ -79,27 +70,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Filtering Logic and Event Handler
     function handleFilterChange() {
         const fullDeck = getDeck();
-        // Get the ID of the currently checked radio button (e.g., 'legendary', 'all')
         const filterId = form.querySelector('input[name="sort"]:checked')?.id || 'all';
 
         let filteredCards = fullDeck;
 
         if (filterId !== 'all') {
-            // Filter the full deck where item.rarity matches the filter ID
             filteredCards = fullDeck.filter(item => item.rarity === filterId);
         }
 
-        // Display the filtered results
         displayDeck(filteredCards);
     }
 
-    // Initial load: Display all cards (this effectively acts as the default 'all' filter)
     handleFilterChange();
 
-    // Attach listener to the form to handle filter changes
     if (form) {
         form.addEventListener('change', handleFilterChange);
     }
