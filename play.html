@@ -15,10 +15,10 @@
 </head>
 <body class="bg-[#121212] flex">
 
-    <!-- <div class="fixed left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] h-[20rem] w-[30rem] rounded-lg bg-gray-400 flex gap-40 justify-center ">
-        <button>🛡️Defender</button>
-        <button>⚔️Attacker</button>
-    </div> -->
+    <div id="choose" class="z-10 hidden fixed left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] py-4 shadow-xl px-5 rounded-lg bg-[rgba(255,255,255,.4)] flex gap-20 justify-center ">
+        <button id="defender" class="bg-blue-400 text-white px-3 py-1 rounded-sm cursor-pointer">🛡️Defender</button>
+        <button id="attacker" class="bg-red-400 text-white px-3 py-1 rounded-sm cursor-pointer">⚔️Attacker</button>
+    </div>
 
     <div class="bg-white h-fit fixed right-4 top-4 px-1 rounded-full cursor-pointer">
         <a href="market.html"><i class="fa-solid fa-shop"></i></a>
@@ -27,7 +27,13 @@
     
     <div id="all-deck" class="bg-gray-500 w-36 h-svh flex flex-col gap-3 overflow-x-hidden [scrollbar-width:none]"></div>
     <div class="bg-gray-600 w-full flex flex-col">
-        <div id="enemy-spot" class="w-full bg-gray-700 h-36"></div>
+        <div id="enemy-spot" class="w-full bg-gray-700 h-36 flex gap-20 justify-center">
+            <img src="img/back.png" alt="card" width="130">
+            <img src="img/back.png" alt="card" width="130">
+            <img src="img/back.png" alt="card" width="130">
+            <img src="img/back.png" alt="card" width="130">
+            <img src="img/back.png" alt="card" width="130">
+        </div>
         <div id="battle-area" class="w-full bg-gray-800 grow">
             <div class="enemy-area  h-1/2 bg-gray-900">
                 <div class=" flex justify-center h-1/2 gap-40">

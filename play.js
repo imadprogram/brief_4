@@ -30,54 +30,56 @@ allcards.forEach(card => {
 
     alldeck.appendChild(adiv)
 
-    adiv.addEventListener('dragstart', ()=>{
+    adiv.addEventListener('dragstart', () => {
         draggedCard = adiv;
         adiv.classList.add('opacity-[.5]')
     })
 
-    adiv.addEventListener('dragend' , ()=>{
+    adiv.addEventListener('dragend', () => {
         adiv.classList.remove('opacity-[.5]')
         draggedCard = null;
     })
 
 
 
-
-
-
-
-
-
 })
 
-    playerSpot.addEventListener('dragover' , e => e.preventDefault())
-    playerSpot.addEventListener('drop' , e => {
+
+
+playerSpot.addEventListener('dragover', e => e.preventDefault())
+playerSpot.addEventListener('drop', e => {
+    e.preventDefault()
+    if (draggedCard) {
+        if (playerSpot.children.length > 4) {
+            alert('there is already 5 cards in your hand')
+            return;
+        } else {
+            playerSpot.appendChild(draggedCard)
+        }
+    }
+})
+
+battlespot.forEach(spot => {
+    spot.addEventListener('dragover', e => e.preventDefault())
+    spot.addEventListener('drop', e => {
         e.preventDefault()
-        if(draggedCard){
-            if(playerSpot.children.length > 4){
-                alert('there is already 5 cards in your hand')
-                return;
-            }else{
-                playerSpot.appendChild(draggedCard)
+        if (draggedCard) {
+            if (spot.children.length > 0) {
+                alert('there is already a card in that place')
+            } else {
+                spot.appendChild(draggedCard)
+                const choose = document.getElementById('choose')
+                choose.classList.remove('hidden')
+
+                const defender = document.getElementById('defender')
+                defender.addEventListener('click' ,()=>{
+                    spot.classList.add('rotate-90')
+                    choose.classList.add('hidden')
+                })
+
             }
         }
     })
 
-    battlespot.forEach(spot => {
-        spot.addEventListener('dragover' , e => e.preventDefault())
-        spot.addEventListener('drop', e => {
-            e.preventDefault()
-            if(draggedCard){
-                if(spot.children.length > 0){
-                    alert('there is already a card in that place')
-                }else{
-                spot.appendChild(draggedCard)
-                let choose = document.createElement('div')
-                document.appendChild(choose)
-                }
-            }
-        })
-    })
-
-
+})
 
