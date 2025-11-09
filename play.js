@@ -6,7 +6,7 @@ function getDeck() {
 
 let alldeck = document.getElementById('all-deck')
 let playerSpot = document.getElementById('player-spot')
-let battlespot = document.querySelectorAll('.holder')
+let battlespot = document.querySelectorAll('.myholder')
 
 let allcards = getDeck();
 let draggedCard = null;
@@ -54,7 +54,12 @@ allcards.forEach(card => {
     playerSpot.addEventListener('drop' , e => {
         e.preventDefault()
         if(draggedCard){
-            playerSpot.appendChild(draggedCard)
+            if(playerSpot.children.length > 4){
+                alert('there is already 5 cards in your hand')
+                return;
+            }else{
+                playerSpot.appendChild(draggedCard)
+            }
         }
     })
 
@@ -63,7 +68,16 @@ allcards.forEach(card => {
         spot.addEventListener('drop', e => {
             e.preventDefault()
             if(draggedCard){
+                if(spot.children.length > 0){
+                    alert('there is already a card in that place')
+                }else{
                 spot.appendChild(draggedCard)
+                let choose = document.createElement('div')
+                document.appendChild(choose)
+                }
             }
         })
     })
+
+
+
