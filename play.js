@@ -75,12 +75,33 @@ battlespot.forEach(spot => {
                 defender.addEventListener('click' ,()=>{
                     spot.classList.add('rotate-90')
                     choose.classList.add('hidden')
+
+                    let shield = document.getElementById('shield')
+                    shield.classList.remove('hidden')
+                    shield.classList.add('animate-[defender_1s_ease]', 'z-10')
+                    setTimeout(() => {
+                        shield.classList.add('hidden')
+                    }, 1500);
+                    
+                    // let shield = document.createElement('img')
+                    // shield.src = 'img/shield.png'
+                    // spot.appendChild(shield)
+                    // shield.classList.add('animate-[defender_1s_ease_.3s]', 'absolute','rotate-[-90deg]')
+                    // setTimeout(() => {
+                    // shield.classList.add('hidden')
+                    // spot.removeChild(shield)
+                    // }, 1500);
                 })
 
                 const attacker = document.getElementById('attacker')
                 attacker.addEventListener('click' ,()=>{
                     choose.classList.add('hidden')
-
+                    let fire = document.getElementById('fire')
+                    fire.classList.remove('hidden')
+                    fire.classList.add('animate-[fire_1.5s_ease]', 'z-10')
+                    setTimeout(() => {
+                        fire.classList.add('hidden')
+                    }, 2000);
                 })
 
             }

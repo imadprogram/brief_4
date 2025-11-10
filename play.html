@@ -10,10 +10,35 @@
 
 
     <style>
-        
+        @keyframes defender {
+            0%{
+                opacity: 0;
+                transform: rotateY(0deg);
+                scale: 1;
+            }50%{
+                transform: rotateY(90deg);
+                scale: 1.5;
+            }100%{
+                opacity: 1;
+                transform: rotateY(180deg);
+                scale: 1;
+            }
+        }
+        @keyframes fire {
+            0%,100%{
+                opacity: 0;
+                scale: 1;
+            }50%{
+                opacity: 1;
+                scale: 1.5;
+            }
+        }
     </style>
+
 </head>
 <body class="bg-[#121212] flex">
+    <img src="img/fire.gif" alt="fire" id="fire" width="200" class="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden">
+    <img src="img/shield.png" alt="shield" id="shield" width="200" class="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden">
 
     <div id="choose" class="z-10 hidden fixed left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] py-4 shadow-xl px-5 rounded-lg bg-[rgba(255,255,255,.4)] flex gap-20 justify-center ">
         <button id="defender" class="bg-blue-400 text-white px-3 py-1 rounded-sm cursor-pointer">🛡️Defender</button>
@@ -32,14 +57,14 @@
         </div>
         <div id="battle-area" class="w-full bg-gray-800 grow">
             <div class="enemy-area  h-1/2 bg-[#121212] flex justify-center items-center gap-40">
-                    <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
-                    <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
-                    <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
             </div>
             <div class="player-area  h-1/2 bg-[#121212] flex justify-center items-center gap-40">
-                    <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"><img src="img/shield.png" alt="shield" class="hidden shield"></div>
-                    <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
-                    <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
+                <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
+                <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
+                <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
             </div>
         </div>
         <div id="player-spot" class="w-full bg-gray-900 h-50 flex justify-center gap-20"></div>
