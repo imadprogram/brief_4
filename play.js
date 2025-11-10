@@ -13,7 +13,7 @@ let draggedCard = null;
 
 allcards.forEach(card => {
     let adiv = document.createElement('div')
-    adiv.className = `rounded-lg ${card.backgroundClass} bg-cover text-white relative w-44 h-[19rem] lg:w-32 lg:h-36 overflow-hidden shrink-0 dragabble`
+    adiv.className = `rounded-lg ${card.backgroundClass} bg-cover text-white relative w-44 h-[19rem] lg:w-36 lg:h-50 overflow-hidden shrink-0 dragabble`
     adiv.setAttribute('draggable', 'true')
     adiv.innerHTML += `                                   
                     <img src="${card.img}" alt="${card.name}" class=" absolute w-20">
@@ -75,6 +75,12 @@ battlespot.forEach(spot => {
                 defender.addEventListener('click' ,()=>{
                     spot.classList.add('rotate-90')
                     choose.classList.add('hidden')
+                })
+
+                const attacker = document.getElementById('attacker')
+                attacker.addEventListener('click' ,()=>{
+                    choose.classList.add('hidden')
+
                 })
 
             }
