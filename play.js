@@ -81,7 +81,7 @@ battlespot.forEach(spot => {
                     shield.classList.add('animate-[defender_1s_ease]', 'z-10')
                     setTimeout(() => {
                         shield.classList.add('hidden')
-                    }, 1500);
+                    }, 100);
                     
                     // let shield = document.createElement('img')
                     // shield.src = 'img/shield.png'

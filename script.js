@@ -182,7 +182,9 @@ function handle_pagination(arr) {
 // handle_pagination(cards);
 
 
-document.querySelector("form").addEventListener("change", (e) => {
+if(document.URL.includes("market.html")){
+
+  document.querySelector("form").addEventListener("change", (e) => {
 
   market_container.innerHTML = ""
 
@@ -204,6 +206,9 @@ document.querySelector("form").addEventListener("change", (e) => {
     }
   }
 })
+
+}
+
 
 
 
