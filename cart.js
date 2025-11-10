@@ -92,8 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const footerHtml = document.createElement('div');
         footerHtml.id = 'cart-footer-fixed';
-        footerHtml.className = 'p-4 fixed bottom-0 right-0 z-50 bg-gray-900 border-t border-gray-700';
-        footerHtml.style.width = cartBar.style.width || '20rem';
+        footerHtml.className = 'p-4 fixed bottom-0 right-0 z-50 bg-gray-900 border-t border-gray-700 text-white';
+        footerHtml.style.width = cartBar.style.width || '19rem';
         
         footerHtml.innerHTML = `
             <div class="pt-2">
