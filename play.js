@@ -82,6 +82,8 @@ battlespot.forEach(spot => {
                     setTimeout(() => {
                         shield.classList.add('hidden')
                     }, 100);
+                    cardofenemy(Math.floor(Math.random() * 5))
+
                     
                     // let shield = document.createElement('img')
                     // shield.src = 'img/shield.png'
@@ -103,8 +105,8 @@ battlespot.forEach(spot => {
                         fire.classList.add('hidden')
                     }, 2000);
 
+                    cardofenemy(Math.floor(Math.random() * 5))
                 })
-                cardofenemy(Math.floor(Math.random() * 5))
 
             }
         }
@@ -225,6 +227,12 @@ let enemyspot = document.querySelectorAll('.hisholder')
 function cardofenemy(index){
     
     let choosen = cards[index]
+    if(enemyspot[index].children.length > 0){
+        // alert('3amra')
+        let newindex = Math.floor(Math.random() * enemyspot.length)
+        cardofenemy(newindex)
+        return;
+    }else{
     enemyspot[index].innerHTML = `
             <div class="rounded-lg bg-[url('${choosen.background}')] bg-cover text-white relative w-44 h-[19rem] lg:w-36 lg:h-50 overflow-hidden shrink-0">                                   
                     <img src="${choosen.character}" alt="${choosen.name}" class=" absolute w-20">
@@ -239,4 +247,5 @@ function cardofenemy(index){
                     </div>
             </div>
                 `
+    }
 }
