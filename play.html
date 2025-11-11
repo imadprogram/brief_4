@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <title>play</title>
 
@@ -45,29 +47,33 @@
         <button id="attacker" class="bg-red-400 text-white px-3 py-1 rounded-sm cursor-pointer">⚔️Attacker</button>
     </div>
 
-    <div class="bg-white h-fit fixed right-4 top-4 px-1 rounded-full cursor-pointer">
-        <a href="market.html"><i class="fa-solid fa-shop"></i></a>
-    </div>
 
+        <a href="market.html"><i class="fa-solid fa-shop   text-white fixed lg:right-4 right-15 top-4 px-1 cursor-pointer"></i></a>
+        <ion-icon name="hand-left-outline" class="lg:hidden text-white h-fit fixed right-15 top-4 cursor-pointer"></ion-icon>
+        <i id="hand" class="fa-solid fa-hand   lg:hidden text-white h-fit fixed right-5 top-4 cursor-pointer"></i>
     
-    <div id="all-deck" class="bg-gray-700 w-42 h-svh flex flex-col items-center gap-3 overflow-x-hidden [scrollbar-width:none]"></div>
+    <div id="all-deck" class="absolute lg:static bg-gray-700 w-42 h-svh flex flex-col items-center gap-3 overflow-x-hidden [scrollbar-width:none]"><ion-icon name="close-outline"></ion-icon></div>
     <div class="bg-gray-600 w-full flex flex-col">
         <div id="enemy-spot" class="w-full bg-gray-800 h-16 flex gap-20 justify-center items-center">
             <h2 class="text-white font-bold text-2xl">enemy hand</h2>
         </div>
         <div id="battle-area" class="w-full bg-gray-800 grow">
-            <div class="enemy-area  h-1/2 bg-[#121212] flex justify-center items-center gap-40">
-                <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
-                <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
-                <div class="holder   w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+            <div class="enemy-area  h-1/2 bg-[#121212] flex justify-center items-center gap-30">
+                <div class="holder hisholder  w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder hisholder  w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder hisholder  w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder hisholder  w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
+                <div class="holder hisholder  w-40 h-[95%] border-dashed border-gray-600 border-4 flex justify-center items-center bg-red-950 rounded-sm"></div>
             </div>
-            <div class="player-area  h-1/2 bg-[#121212] flex justify-center items-center gap-40">
+            <div class="player-area  h-1/2 bg-[#121212] flex justify-center items-center gap-30">
+                <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
+                <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
                 <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
                 <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
                 <div class="holder myholder   w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center items-center rounded-sm"></div>
             </div>
         </div>
-        <div id="player-spot" class="w-full bg-gray-900 h-50 flex justify-center gap-20"></div>
+        <div id="player-spot" class="lg:w-full bg-gray-900 lg:h-50 lg:flex lg:static lg:justify-center gap-20  h-full absolute top-0 right-[-10em] w-40"><ion-icon name="close-outline" id="closebtn" class="lg:hidden absolute top-0 left-0 text-white p-3"></ion-icon></div>
     </div>
     
 </body>

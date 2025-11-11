@@ -50,7 +50,7 @@ playerSpot.addEventListener('dragover', e => e.preventDefault())
 playerSpot.addEventListener('drop', e => {
     e.preventDefault()
     if (draggedCard) {
-        if (playerSpot.children.length > 4) {
+        if (playerSpot.children.length > 5) {
             alert('there is already 5 cards in your hand')
             return;
         } else {
@@ -102,7 +102,9 @@ battlespot.forEach(spot => {
                     setTimeout(() => {
                         fire.classList.add('hidden')
                     }, 2000);
+
                 })
+                cardofenemy(Math.floor(Math.random() * 5))
 
             }
         }
@@ -110,3 +112,131 @@ battlespot.forEach(spot => {
 
 })
 
+
+
+// for mobile
+
+
+let closebtn = document.getElementById('closebtn')
+let hand = document.getElementById('hand')
+
+hand.addEventListener('click', ()=>{
+    playerSpot.classList.remove('right-[-10em]')
+    playerSpot.classList.add('right-0')
+    playerSpot.classList.add('transition')
+
+})
+closebtn.addEventListener('click', ()=>{
+    playerSpot.classList.add('right-[-10em]')
+    playerSpot.classList.remove('right-0')
+})
+
+
+
+// automation
+
+
+const cards = [
+  {
+    background: "img/legendary.png",
+    character: "img/poppy.png",
+    name: "Queen Poppy",
+    type: "legendary",
+    color: "#8A2BE2",
+    price: 99
+  },
+  {
+    background: "img/epic.png",
+    character: "img/green-guy.png",
+    name: "Green Guy",
+    type: "epic",
+    color: "#00B35A",
+    price: 79
+  },
+  {
+    background: "img/commun.png",
+    character: "img/groso.png",
+    name: "Groso",
+    type: "commun",
+    color: "rgba(255, 255, 255, 0.2)",
+    price: 19
+  },
+  {
+    background: "img/epic.png",
+    character: "img/goblen.png",
+    name: "Goblen",
+    type: "epic",
+    color: "#00B35A",
+    price: 79
+  },
+  {
+    background: "img/rare.png",
+    character: "img/hairy.png",
+    name: "Hairy",
+    type: "rare",
+    color: "#FF8C00",
+    price: 59
+  },
+  {
+    background: "img/legendary.png",
+    character: "img/diamond-guy.png",
+    name: "Diamond guy",
+    type: "legendary",
+    color: "#8A2BE2",
+    price: 99
+  },
+  {
+    background: "img/commun.png",
+    character: "img/nino.png",
+    name: "Nino",
+    type: "commun",
+    color: "rgba(255, 255, 255, .4)",
+    price: 19
+  },
+  {
+    background: "img/rare.png",
+    character: "img/clover.png",
+    name: "Clover",
+    type: "rare",
+    color: "#FF8C00",
+    price: 59
+  },
+  {
+    background: "img/legendary.png",
+    character: "img/lorry.png",
+    name: "Lorry",
+    type: "legendary",
+    color: "#8A2BE2",
+    price: 99
+  },
+  {
+    background: "img/epic.png",
+    character: "img/bluue.png",
+    name: "Bluue",
+    type: "epic",
+    color: "#00B35A",
+    price: 79
+  }
+];
+
+let enemyspot = document.querySelectorAll('.hisholder')
+
+
+function cardofenemy(index){
+    
+    let choosen = cards[index]
+    enemyspot[index].innerHTML = `
+            <div class="rounded-lg bg-[url('${choosen.background}')] bg-cover text-white relative w-44 h-[19rem] lg:w-36 lg:h-50 overflow-hidden shrink-0">                                   
+                    <img src="${choosen.character}" alt="${choosen.name}" class=" absolute w-20">
+
+                    <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%] w-full">
+                        <h2 class="font-lilita text-[.9rem] font-sf">${choosen.name}</h2>
+                        <div class="flex justify-between items-center">
+                            <h6 class="bg-[${choosen.color}] rounded-full px-2 text-[7px] flex items-center font-semibold">
+                                ${choosen.type}
+                            </h6>
+                        </div>
+                    </div>
+            </div>
+                `
+}
