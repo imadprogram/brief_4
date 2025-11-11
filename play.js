@@ -72,7 +72,7 @@ battlespot.forEach(spot => {
                 choose.classList.remove('hidden')
 
                 const defender = document.getElementById('defender')
-                defender.addEventListener('click' ,()=>{
+                defender.onclick = () => {
                     spot.classList.add('rotate-90')
                     choose.classList.add('hidden')
 
@@ -93,10 +93,10 @@ battlespot.forEach(spot => {
                     // shield.classList.add('hidden')
                     // spot.removeChild(shield)
                     // }, 1500);
-                })
+                }
 
                 const attacker = document.getElementById('attacker')
-                attacker.addEventListener('click' ,()=>{
+                attacker.onclick = () => {
                     choose.classList.add('hidden')
                     let fire = document.getElementById('fire')
                     fire.classList.remove('hidden')
@@ -106,7 +106,7 @@ battlespot.forEach(spot => {
                     }, 2000);
 
                     cardofenemy(Math.floor(Math.random() * 5))
-                })
+                }
 
             }
         }
