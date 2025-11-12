@@ -26,7 +26,7 @@ allcards.forEach(card => {
                             </h6>
                         </div>
                     </div>
-                `
+               `
 
     alldeck.appendChild(adiv)
 
@@ -67,21 +67,22 @@ battlespot.forEach(spot => {
             if (spot.children.length > 0) {
                 alert('there is already a card in that place')
             } else {
+
                 spot.appendChild(draggedCard)
                 const choose = document.getElementById('choose')
                 choose.classList.remove('hidden')
 
                 const defender = document.getElementById('defender')
                 defender.onclick = () => {
-                    spot.classList.add('rotate-90')
+                    spot.classList.add('rotate-90','transition','bg-blue-400')
+                    spot.classList.remove('bg-gray-800')
                     choose.classList.add('hidden')
 
                     let shield = document.getElementById('shield')
-                    shield.classList.remove('hidden')
-                    shield.classList.add('animate-[defender_1s_ease]', 'z-10')
-                    setTimeout(() => {
-                        shield.classList.add('hidden')
-                    }, 100);
+                    // shield.classList.remove('hidden')
+                    // shield.classList.add('animate-[defender_1s_ease]', 'z-10')
+                    spot.classList.add('animate-[defender_1s_ease]')
+
                     cardofenemy(Math.floor(Math.random() * 5))
 
                     
@@ -97,13 +98,13 @@ battlespot.forEach(spot => {
 
                 const attacker = document.getElementById('attacker')
                 attacker.onclick = () => {
+                    // spot.classList.add('rotate-90')
+                    spot.classList.add('transition')
+                    spot.classList.add('bg-red-400')
+                    spot.classList.remove('bg-gray-800')
+
                     choose.classList.add('hidden')
-                    let fire = document.getElementById('fire')
-                    fire.classList.remove('hidden')
-                    fire.classList.add('animate-[fire_1.5s_ease]', 'z-10')
-                    setTimeout(() => {
-                        fire.classList.add('hidden')
-                    }, 2000);
+                    spot.classList.add('animate-[fire_1.5s_ease]')
 
                     cardofenemy(Math.floor(Math.random() * 5))
                 }
