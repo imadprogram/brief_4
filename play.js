@@ -69,51 +69,53 @@ battlespot.forEach(spot => {
                 alert('there is already a card in that place')
             } else {
 
-                if(draggedCard.classList.contains('onhand')){
-                spot.appendChild(draggedCard)
-                const choose = document.getElementById('choose')
-                choose.classList.remove('hidden')
+                if (draggedCard.classList.contains('onhand')) {
+                    // put it only if it was on your hand first
+                    spot.appendChild(draggedCard)
+                    const choose = document.getElementById('choose')
+                    choose.classList.remove('hidden')
 
-                draggedCard.setAttribute('draggable', false)
+                    draggedCard.setAttribute('draggable', false)
+                    draggedCard.classList.add('pointer-events-none')
 
-                const defender = document.getElementById('defender')
-                defender.onclick = () => {
-                    spot.classList.add('rotate-90','transition','bg-blue-400')
-                    spot.classList.remove('bg-gray-800')
-                    choose.classList.add('hidden')
+                    const defender = document.getElementById('defender')
+                    defender.onclick = () => {
+                        spot.classList.add('rotate-90', 'transition', 'bg-blue-400')
+                        spot.classList.remove('bg-gray-800')
+                        choose.classList.add('hidden')
 
 
-                    let shield = document.getElementById('shield')
-                    // shield.classList.remove('hidden')
-                    // shield.classList.add('animate-[defender_1s_ease]', 'z-10')
-                    spot.classList.add('animate-[defender_1s_ease]')
+                        let shield = document.getElementById('shield')
+                        // shield.classList.remove('hidden')
+                        // shield.classList.add('animate-[defender_1s_ease]', 'z-10')
+                        spot.classList.add('animate-[defender_1s_ease]')
 
-                    cardofenemy(Math.floor(Math.random() * 5))
+                        cardofenemy(Math.floor(Math.random() * 5))
 
-                    
-                    // let shield = document.createElement('img')
-                    // shield.src = 'img/shield.png'
-                    // spot.appendChild(shield)
-                    // shield.classList.add('animate-[defender_1s_ease_.3s]', 'absolute','rotate-[-90deg]')
-                    // setTimeout(() => {
-                    // shield.classList.add('hidden')
-                    // spot.removeChild(shield)
-                    // }, 1500);
-                }
 
-                const attacker = document.getElementById('attacker')
-                attacker.onclick = () => {
-                    // spot.classList.add('rotate-90')
-                    spot.classList.add('transition')
-                    spot.classList.add('bg-red-400')
-                    spot.classList.remove('bg-gray-800')
+                        // let shield = document.createElement('img')
+                        // shield.src = 'img/shield.png'
+                        // spot.appendChild(shield)
+                        // shield.classList.add('animate-[defender_1s_ease_.3s]', 'absolute','rotate-[-90deg]')
+                        // setTimeout(() => {
+                        // shield.classList.add('hidden')
+                        // spot.removeChild(shield)
+                        // }, 1500);
+                    }
 
-                    choose.classList.add('hidden')
-                    spot.classList.add('animate-[fire_1.5s_ease]')
+                    const attacker = document.getElementById('attacker')
+                    attacker.onclick = () => {
+                        // spot.classList.add('rotate-90')
+                        spot.classList.add('transition')
+                        spot.classList.add('bg-red-400')
+                        spot.classList.remove('bg-gray-800')
 
-                    cardofenemy(Math.floor(Math.random() * 5))
-                }
-                }else{
+                        choose.classList.add('hidden')
+                        spot.classList.add('animate-[fire_1.5s_ease]')
+
+                        cardofenemy(Math.floor(Math.random() * 5))
+                    }
+                } else {
                     alert('laaa')
                 }
 
@@ -131,13 +133,13 @@ battlespot.forEach(spot => {
 let closebtn = document.getElementById('closebtn')
 let hand = document.getElementById('hand')
 
-hand.addEventListener('click', ()=>{
+hand.addEventListener('click', () => {
     playerSpot.classList.remove('right-[-10em]')
     playerSpot.classList.add('right-0')
     playerSpot.classList.add('transition')
 
 })
-closebtn.addEventListener('click', ()=>{
+closebtn.addEventListener('click', () => {
     playerSpot.classList.add('right-[-10em]')
     playerSpot.classList.remove('right-0')
 })
@@ -148,101 +150,101 @@ closebtn.addEventListener('click', ()=>{
 
 
 const cards = [
-  {
-    background: "img/legendary.png",
-    character: "img/poppy.png",
-    name: "Queen Poppy",
-    type: "legendary",
-    color: "#8A2BE2",
-    price: 99
-  },
-  {
-    background: "img/epic.png",
-    character: "img/green-guy.png",
-    name: "Green Guy",
-    type: "epic",
-    color: "#00B35A",
-    price: 79
-  },
-  {
-    background: "img/commun.png",
-    character: "img/groso.png",
-    name: "Groso",
-    type: "commun",
-    color: "rgba(255, 255, 255, 0.2)",
-    price: 19
-  },
-  {
-    background: "img/epic.png",
-    character: "img/goblen.png",
-    name: "Goblen",
-    type: "epic",
-    color: "#00B35A",
-    price: 79
-  },
-  {
-    background: "img/rare.png",
-    character: "img/hairy.png",
-    name: "Hairy",
-    type: "rare",
-    color: "#FF8C00",
-    price: 59
-  },
-  {
-    background: "img/legendary.png",
-    character: "img/diamond-guy.png",
-    name: "Diamond guy",
-    type: "legendary",
-    color: "#8A2BE2",
-    price: 99
-  },
-  {
-    background: "img/commun.png",
-    character: "img/nino.png",
-    name: "Nino",
-    type: "commun",
-    color: "rgba(255, 255, 255, .4)",
-    price: 19
-  },
-  {
-    background: "img/rare.png",
-    character: "img/clover.png",
-    name: "Clover",
-    type: "rare",
-    color: "#FF8C00",
-    price: 59
-  },
-  {
-    background: "img/legendary.png",
-    character: "img/lorry.png",
-    name: "Lorry",
-    type: "legendary",
-    color: "#8A2BE2",
-    price: 99
-  },
-  {
-    background: "img/epic.png",
-    character: "img/bluue.png",
-    name: "Bluue",
-    type: "epic",
-    color: "#00B35A",
-    price: 79
-  }
+    {
+        background: "img/legendary.png",
+        character: "img/poppy.png",
+        name: "Queen Poppy",
+        type: "legendary",
+        color: "#8A2BE2",
+        price: 99
+    },
+    {
+        background: "img/epic.png",
+        character: "img/green-guy.png",
+        name: "Green Guy",
+        type: "epic",
+        color: "#00B35A",
+        price: 79
+    },
+    {
+        background: "img/commun.png",
+        character: "img/groso.png",
+        name: "Groso",
+        type: "commun",
+        color: "rgba(255, 255, 255, 0.2)",
+        price: 19
+    },
+    {
+        background: "img/epic.png",
+        character: "img/goblen.png",
+        name: "Goblen",
+        type: "epic",
+        color: "#00B35A",
+        price: 79
+    },
+    {
+        background: "img/rare.png",
+        character: "img/hairy.png",
+        name: "Hairy",
+        type: "rare",
+        color: "#FF8C00",
+        price: 59
+    },
+    {
+        background: "img/legendary.png",
+        character: "img/diamond-guy.png",
+        name: "Diamond guy",
+        type: "legendary",
+        color: "#8A2BE2",
+        price: 99
+    },
+    {
+        background: "img/commun.png",
+        character: "img/nino.png",
+        name: "Nino",
+        type: "commun",
+        color: "rgba(255, 255, 255, .4)",
+        price: 19
+    },
+    {
+        background: "img/rare.png",
+        character: "img/clover.png",
+        name: "Clover",
+        type: "rare",
+        color: "#FF8C00",
+        price: 59
+    },
+    {
+        background: "img/legendary.png",
+        character: "img/lorry.png",
+        name: "Lorry",
+        type: "legendary",
+        color: "#8A2BE2",
+        price: 99
+    },
+    {
+        background: "img/epic.png",
+        character: "img/bluue.png",
+        name: "Bluue",
+        type: "epic",
+        color: "#00B35A",
+        price: 79
+    }
 ];
 
 let enemyspot = document.querySelectorAll('.hisholder')
 
 
-function cardofenemy(index){
-    
+function cardofenemy(index) {
+
     let choosen = cards[index]
-    if(enemyspot[index].children.length > 0){
+    if (enemyspot[index].children.length > 0) {
         // alert('3amra')
         let newindex = Math.floor(Math.random() * enemyspot.length)
         cardofenemy(newindex)
         return;
-    }else{
-    enemyspot[index].innerHTML = `
+    } else {
+        enemyspot[index].innerHTML = `
             <div class="rounded-lg bg-[url('${choosen.background}')] bg-cover text-white relative w-44 h-[19rem] lg:w-36 lg:h-50 overflow-hidden shrink-0">                                   
                     <img src="${choosen.character}" alt="${choosen.name}" class=" absolute w-20">
 
