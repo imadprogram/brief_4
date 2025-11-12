@@ -55,6 +55,7 @@ playerSpot.addEventListener('drop', e => {
             return;
         } else {
             playerSpot.appendChild(draggedCard)
+            draggedCard.classList.add('onhand')
         }
     }
 })
@@ -68,15 +69,19 @@ battlespot.forEach(spot => {
                 alert('there is already a card in that place')
             } else {
 
+                if(draggedCard.classList.contains('onhand')){
                 spot.appendChild(draggedCard)
                 const choose = document.getElementById('choose')
                 choose.classList.remove('hidden')
+
+                draggedCard.setAttribute('draggable', false)
 
                 const defender = document.getElementById('defender')
                 defender.onclick = () => {
                     spot.classList.add('rotate-90','transition','bg-blue-400')
                     spot.classList.remove('bg-gray-800')
                     choose.classList.add('hidden')
+
 
                     let shield = document.getElementById('shield')
                     // shield.classList.remove('hidden')
@@ -107,6 +112,9 @@ battlespot.forEach(spot => {
                     spot.classList.add('animate-[fire_1.5s_ease]')
 
                     cardofenemy(Math.floor(Math.random() * 5))
+                }
+                }else{
+                    alert('laaa')
                 }
 
             }
