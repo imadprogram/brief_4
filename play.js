@@ -91,7 +91,7 @@ battlespot.forEach(spot => {
                     }
 
                     const defender = document.getElementById('defender')
-                    defender.onclick = () => {
+                    defender.onclick = (e) => {
                         spot.classList.add('rotate-90', 'transition', 'bg-blue-400')
                         spot.classList.remove('bg-gray-800')
                         choose.classList.add('hidden')
@@ -101,6 +101,9 @@ battlespot.forEach(spot => {
                         // shield.classList.remove('hidden')
                         // shield.classList.add('animate-[defender_1s_ease]', 'z-10')
                         spot.classList.add('animate-[defender_1s_ease]')
+
+                        // when clicking the parent wont be affected with the click this is for the toast
+                        e.stopPropagation()
 
                         cardofenemy(Math.floor(Math.random() * 5))
 
@@ -116,7 +119,7 @@ battlespot.forEach(spot => {
                     }
 
                     const attacker = document.getElementById('attacker')
-                    attacker.onclick = () => {
+                    attacker.onclick = (e) => {
                         // spot.classList.add('rotate-90')
                         spot.classList.add('transition')
                         spot.classList.add('bg-red-400')
@@ -124,7 +127,9 @@ battlespot.forEach(spot => {
 
                         choose.classList.add('hidden')
                         spot.classList.add('animate-[fire_1.5s_ease]')
-
+                        
+                        // when clicking the parent wont be affected with the click this is for the toast
+                        e.stopPropagation()
 
                         cardofenemy(Math.floor(Math.random() * 5))
                     }
