@@ -78,6 +78,18 @@ battlespot.forEach(spot => {
                     draggedCard.setAttribute('draggable', false)
                     draggedCard.classList.add('pointer-events-none')
 
+                    // if clicked on the side areas will show a toast
+                    choose.onclick = () => {
+                        Toastify({
+
+                            text: "choose first !",
+                            duration: 3000,
+                            gravity: "top",
+                            position: "center",
+
+                        }).showToast();
+                    }
+
                     const defender = document.getElementById('defender')
                     defender.onclick = () => {
                         spot.classList.add('rotate-90', 'transition', 'bg-blue-400')
@@ -112,6 +124,7 @@ battlespot.forEach(spot => {
 
                         choose.classList.add('hidden')
                         spot.classList.add('animate-[fire_1.5s_ease]')
+
 
                         cardofenemy(Math.floor(Math.random() * 5))
                     }
