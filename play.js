@@ -7,23 +7,25 @@ function getDeck() {
 let alldeck = document.getElementById('all-deck')
 let playerSpot = document.getElementById('player-spot')
 let battlespot = document.querySelectorAll('.myholder')
+let enemyspot = document.querySelectorAll('.hisholder')
 
 let allcards = getDeck();
 let draggedCard = null;
 
 allcards.forEach(card => {
     let adiv = document.createElement('div')
-    adiv.className = `rounded-lg ${card.backgroundClass} bg-cover text-white relative w-44 h-[19rem] lg:w-36 lg:h-50 overflow-hidden shrink-0 dragabble`
+    adiv.className = `rounded-lg ${card.backgroundClass} bg-cover text-white relative w-20 h-[9rem] lg:w-36 lg:h-50 overflow-hidden shrink-0 dragabble`
     adiv.setAttribute('draggable', 'true')
     adiv.innerHTML += `                                   
                     <img src="${card.img}" alt="${card.name}" class=" absolute w-20">
 
                     <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%] w-full">
-                        <h2 class="font-lilita text-[.9rem] font-sf">${card.name}</h2>
+                        <h2 class="font-lilita lg:text-[.9rem] text-[.5rem] font-sf">${card.name}</h2>
                         <div class="flex justify-between items-center">
                             <h6 class="${card.rarityClass} rounded-full px-2 text-[7px] flex items-center font-semibold">
                                 ${card.rarity}
                             </h6>
+                            <h6 class="flex items-center"><img src="img/heart.png" class="w-3 h-3" alt="heart"> ${Math.floor(Math.random() * 50 + 50)}</h6>
                         </div>
                     </div>
                `
@@ -105,7 +107,20 @@ battlespot.forEach(spot => {
                         // when clicking the parent wont be affected with the click this is for the toast
                         e.stopPropagation()
 
-                        cardofenemy(Math.floor(Math.random() * 5))
+                        Toastify({
+
+                            text: "wait for your turn !",
+                            duration: 2000,
+                            gravity: "top",
+                            position: "center",
+
+                        }).showToast();
+
+                        setTimeout(() => {
+
+                            cardofenemy(Math.floor(Math.random() * 5))
+
+                        }, 1500);
 
 
                         // let shield = document.createElement('img')
@@ -127,14 +142,35 @@ battlespot.forEach(spot => {
 
                         choose.classList.add('hidden')
                         spot.classList.add('animate-[fire_1.5s_ease]')
-                        
+
                         // when clicking the parent wont be affected with the click this is for the toast
                         e.stopPropagation()
 
-                        cardofenemy(Math.floor(Math.random() * 5))
+
+                        Toastify({
+
+                            text: "wait for your turn !",
+                            duration: 2000,
+                            gravity: "top",
+                            position: "center",
+
+                        }).showToast();
+
+                        setTimeout(() => {
+
+                            cardofenemy(Math.floor(Math.random() * 5))
+
+                        }, 1500);
                     }
                 } else {
-                    alert('laaa')
+                    Toastify({
+
+                        text: "you cant do that !",
+                        duration: 2000,
+                        gravity: "top",
+                        position: "center",
+
+                    }).showToast();
                 }
 
             }
@@ -250,8 +286,6 @@ const cards = [
     }
 ];
 
-let enemyspot = document.querySelectorAll('.hisholder')
-
 
 function cardofenemy(index) {
 
@@ -263,7 +297,7 @@ function cardofenemy(index) {
         return;
     } else {
         enemyspot[index].innerHTML = `
-            <div class="rounded-lg bg-[url('${choosen.background}')] bg-cover text-white relative w-44 h-[19rem] lg:w-36 lg:h-50 overflow-hidden shrink-0">                                   
+            <div class="rounded-lg bg-[url('${choosen.background}')] bg-cover text-white relative w-20 h-[9rem] lg:w-36 lg:h-50 overflow-hidden shrink-0">                                   
                     <img src="${choosen.character}" alt="${choosen.name}" class=" absolute w-20">
 
                     <div class="backdrop-blur-sm absolute bottom-0 rounded-b-lg p-2 px-4 h-[30%] w-full">
@@ -276,5 +310,33 @@ function cardofenemy(index) {
                     </div>
             </div>
                 `
+
+        enemymode(enemyspot[index])
     }
+}
+
+function enemymode(spot) {
+    let choice = Math.floor(Math.random() * 2);
+
+    if (choice == 1) {
+        enemyattack(spot)
+    } else {
+        enemydefense(spot)
+    }
+}
+
+function enemyattack(spot) {
+    spot.classList.add('transition')
+    spot.classList.add('bg-red-400')
+    spot.classList.remove('bg-red-950')
+    choose.classList.add('hidden')
+    spot.classList.add('animate-[fire_1.5s_ease]')
+}
+
+
+function enemydefense(spot) {
+    spot.classList.add('rotate-90', 'transition', 'bg-blue-400')
+    spot.classList.remove('bg-red-950')
+    choose.classList.add('hidden')
+    spot.classList.add('animate-[defender_1s_ease]')
 }
