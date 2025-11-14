@@ -9,6 +9,8 @@ let playerSpot = document.getElementById('player-spot')
 let battlespot = document.querySelectorAll('.myholder')
 let enemyspot = document.querySelectorAll('.hisholder')
 
+let audio = new Audio('/audios/card.mp3')
+
 let allcards = getDeck();
 let draggedCard = null;
 
@@ -58,6 +60,7 @@ playerSpot.addEventListener('drop', e => {
         } else {
             playerSpot.appendChild(draggedCard)
             draggedCard.classList.add('onhand')
+            audio.play();
         }
     }
 })
@@ -123,6 +126,9 @@ battlespot.forEach(spot => {
                         }, 1500);
 
 
+                        audio.play();
+
+
                         // let shield = document.createElement('img')
                         // shield.src = 'img/shield.png'
                         // spot.appendChild(shield)
@@ -161,6 +167,9 @@ battlespot.forEach(spot => {
                             cardofenemy(Math.floor(Math.random() * 5))
 
                         }, 1500);
+
+                        audio.play();
+
                     }
                 } else {
                     Toastify({
@@ -313,6 +322,7 @@ function cardofenemy(index) {
 
         enemymode(enemyspot[index])
     }
+    audio.play();
 }
 
 function enemymode(spot) {
@@ -340,3 +350,11 @@ function enemydefense(spot) {
     choose.classList.add('hidden')
     spot.classList.add('animate-[defender_1s_ease]')
 }
+
+
+
+
+// rounds
+
+
+if(enemyspot)
