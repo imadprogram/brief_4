@@ -64,8 +64,9 @@
 
         <a href="market.html"><i class="fa-solid fa-shop   text-white fixed lg:right-4 right-15 top-4 px-1 cursor-pointer"></i></a>
         <i id="hand" class="fa-solid fa-hand   lg:right-20 lg:text-transparent text-white h-fit fixed right-5 top-4 cursor-pointer"></i>
+        <ion-icon name="file-tray-full-outline" id="deckvault" class="lg:hidden fixed top-4 left-5 text-white"></ion-icon>
     
-    <div id="all-deck" class="absolute lg:static bg-gray-900 w-44 lg:h-svh h-full flex flex-col items-center gap-3 overflow-x-hidden [scrollbar-width:none]"><ion-icon class="text-white text-2xl " name="close-outline"></ion-icon></div>
+    <div id="all-deck" class="absolute lg:static bg-gray-900 w-44 lg:h-svh h-full flex flex-col items-center gap-3 overflow-x-hidden [scrollbar-width:none] lg:translate-x-0 translate-x-[-12em]"><ion-icon id="deckclose" class="text-white text-2xl lg:hidden absolute right-0" name="close-outline"></ion-icon></div>
     <div class="bg-gray-600 w-full flex flex-col">
         <div id="enemy-spot" class="w-full bg-gray-800 lg:h-16 h-12 flex gap-20 justify-center items-center">
             <h2 class="text-white font-bold text-2xl">enemy hand</h2>
@@ -86,7 +87,7 @@
                 <div class="holder myholder  w-26 lg:w-40 h-[95%] border-dashed border-gray-600 border-4 overflow-hidden flex justify-center bg-gray-800 items-center rounded-sm"></div>
             </div>
         </div>
-        <div id="player-spot" class="lg:w-full bg-gray-950 bg-cover border-t border-blue-500 lg:h-50 lg:flex lg:static lg:justify-center gap-20  h-full absolute top-0 right-[-10em] w-40"><ion-icon name="close-outline" id="closebtn" class="lg:hidden absolute top-0 left-0 text-white p-3"></ion-icon></div>
+        <div id="player-spot" class="lg:w-full bg-gray-950 bg-cover border-t border-blue-500 lg:h-50 lg:flex lg:static lg:justify-center gap-20  h-full absolute top-0 right-[-10em] w-40"><ion-icon name="close-outline" id="closebtn" class="lg:hidden absolute top-0 right-0 text-white p-3"></ion-icon></div>
     </div>
     
 </body>

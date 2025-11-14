@@ -27,7 +27,7 @@ allcards.forEach(card => {
                             <h6 class="${card.rarityClass} rounded-full px-2 text-[7px] flex items-center font-semibold">
                                 ${card.rarity}
                             </h6>
-                            <h6 class="flex items-center"><img src="img/heart.png" class="w-3 h-3" alt="heart"> ${Math.floor(Math.random() * 50 + 50)}</h6>
+                            <h6 class="flex items-center"><img src="img/thunder.png" class="w-3 h-3" alt="thunder"> ${Math.floor(Math.random() * 50 + 50)}</h6>
                         </div>
                     </div>
                `
@@ -207,6 +207,16 @@ closebtn.addEventListener('click', () => {
     playerSpot.classList.remove('right-0')
 })
 
+let deckclose = document.getElementById('deckclose')
+let deckvault = document.getElementById('deckvault')
+
+deckvault.addEventListener('click', ()=>{
+    alldeck.classList.remove('translate-x-[-12em]')
+    alldeck.classList.add('transition')
+})
+deckclose.addEventListener('click', ()=>{
+    alldeck.classList.add('translate-x-[-12em]')
+})
 
 
 // automation
@@ -315,6 +325,7 @@ function cardofenemy(index) {
                             <h6 class="bg-[${choosen.color}] rounded-full px-2 text-[7px] flex items-center font-semibold">
                                 ${choosen.type}
                             </h6>
+                            <h6 class="flex items-center"><img src="img/thunder.png" class="w-3 h-3" alt="thunder"> ${Math.floor(Math.random() * 50 + 50)}</h6>
                         </div>
                     </div>
             </div>
@@ -354,7 +365,9 @@ function enemydefense(spot) {
 
 
 
-// rounds
 
-
-if(enemyspot)
+battlespot.forEach(battle =>{
+    if(battle.children.length>0){
+        alert('worked')
+    }
+})
